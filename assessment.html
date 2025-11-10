@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Blueprint Assessment - Light of Destiny</title>
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Soul Blueprint Assessment - Light of Destiny">
+    <meta property="og:description" content="Discover your position in the 3D/5D integration journey. Find out if you're a Light Keeper, Bridge Builder, Phoenix, or Seeker.">
+    <meta property="og:image" content="assets/images/story/soul-blueprint-og.jpg">
+    <meta property="og:url" content="assessment.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Soul Blueprint Assessment - Light of Destiny">
+    <meta name="twitter:description" content="Discover your position in the 3D/5D integration journey.">
+    <meta name="twitter:image" content="assets/images/story/soul-blueprint-og.jpg">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #0d1123;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        html {
+            overflow-y: scroll !important;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .brand-link {
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .language-selector select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            outline: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .language-selector select:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        /* Assessment Container */
+        .assessment-container {
+            max-width: 1000px;
+            margin: 140px auto 80px;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .assessment-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .assessment-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FFD700, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .assessment-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .why-patterns {
+            font-size: 1rem;
+            color: rgba(255, 105, 180, 0.9);
+            margin: 0.8rem 0;
+            font-weight: 500;
+        }
+
+        .assessment-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 215, 0, 0.7);
+            font-style: italic;
+        }
+
+        /* Progress */
+        .progress-section {
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FF69B4);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Question Group Card */
+        .question-group-card {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .question-group-card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .group-category {
+            text-align: center;
+            font-size: 1.1rem;
+            color: rgba(255, 215, 0, 0.8);
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Individual Question within Group */
+        .question-block {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .question-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .dimension-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .dimension-3d {
+            background: linear-gradient(45deg, #FF6B6B, #FFA500);
+            color: white;
+        }
+
+        .dimension-5d {
+            background: linear-gradient(45deg, #9B59B6, #3498db);
+            color: white;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+            line-height: 1.5;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .option:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.6);
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #FFD700;
+        }
+
+        .option.selected::before {
+            content: '✓';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FFD700;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-btn.prev {
+            flex: 0.4;
+        }
+
+        /* Results Container */
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .result-header h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .quadrant-result {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .quadrant-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .quadrant-name {
+            font-size: 1.8rem;
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .quadrant-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .score-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .score-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .score-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-value {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .result-section {
+            margin: 2rem 0;
+        }
+
+        .result-section h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .result-section p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quadrant-percentages {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .percentage-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .percentage-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .percentage-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(52, 152, 219, 0.1));
+            border-radius: 20px;
+            border: 2px solid rgba(155, 89, 182, 0.3);
+        }
+
+        /* Social Share Section */
+        .share-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border: 2px solid;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .share-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .share-btn.twitter {
+            color: #1DA1F2;
+            border-color: #1DA1F2;
+        }
+
+        .share-btn.twitter:hover {
+            background: rgba(29, 161, 242, 0.1);
+        }
+
+        .share-btn.facebook {
+            color: #4267B2;
+            border-color: #4267B2;
+        }
+
+        .share-btn.facebook:hover {
+            background: rgba(66, 103, 178, 0.1);
+        }
+
+        .share-btn.linkedin {
+            color: #0077B5;
+            border-color: #0077B5;
+        }
+
+        .share-btn.linkedin:hover {
+            background: rgba(0, 119, 181, 0.1);
+        }
+
+        .share-btn.copy {
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+
+        .share-btn.copy:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .copy-success {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            border-radius: 10px;
+            color: #4CAF50;
+            font-weight: 600;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(52, 152, 219, 0.1));
+            border-radius: 20px;
+            border: 2px solid rgba(155, 89, 182, 0.3);
+        }
+
+        .newsletter-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .newsletter-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            border-left: 3px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 25px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .email-input:focus {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .subscribe-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #9B59B6, #3498db);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(155, 89, 182, 0.4);
+        }
+
+        .consent-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .consent-label input[type="checkbox"] {
+            margin-top: 0.2rem;
+            cursor: pointer;
+        }
+
+        .consent-label span {
+            line-height: 1.4;
+        }
+
+        .newsletter-success {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #0d1123;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .retake-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            color: #FFD700;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .retake-btn:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        /* Next Steps CTA */
+        .next-steps-cta {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 105, 180, 0.1));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+        }
+
+        .next-steps-cta h3 {
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .next-steps-cta > p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .primary-cta,
+        .secondary-cta {
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .primary-cta {
+            background: linear-gradient(135deg, #FFD700, #FF69B4);
+            color: #0d1123;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .secondary-cta {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .secondary-cta:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Pattern Explanations */
+        .pattern-explanations {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border-left: 4px solid #FF69B4;
+        }
+
+        .pattern-explanations h4 {
+            color: #FF69B4;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pattern-item {
+            margin: 1rem 0;
+            padding-left: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        .pattern-item strong {
+            color: #FFD700;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: rgba(13, 17, 35, 0.8);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-author {
+            color: rgba(255, 215, 0, 0.8);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .assessment-container {
+                margin: 120px 1rem 60px;
+                padding: 2rem 1.5rem;
+            }
+
+            .assessment-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .question-block {
+                padding: 1.5rem;
+            }
+
+            .score-display,
+            .quadrant-percentages {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-link {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .newsletter-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .subscribe-btn {
+                width: 100%;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .share-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <span class="brand-text">Light of Destiny</span>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="assessment.html" class="nav-link active">Assessment</a>
+                <a href="decipher.html" class="nav-link">Decipher</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="zh">繁體中文</option>
+                        <option value="zh-cn">简体中文</option>
+                        <option value="ja">日本語</option>
+                        <option value="ru">Русский</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Assessment Container -->
+    <div class="assessment-container">
+        <div class="assessment-header">
+            <h1>Soul Blueprint Assessment</h1>
+            <p>Discover Your Position in the 3D/5D Integration Journey</p>
+            <p class="why-patterns">Why do the same patterns keep repeating? Let's find out.</p>
+            <p class="assessment-subtitle">34 question pairs • 10 minutes • Your snapshot today</p>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-section" id="progressSection">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text" id="progressText">Question Group 1 of 34</p>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="questionsContainer"></div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons" id="navigationButtons">
+            <button class="nav-btn prev" id="prevBtn">← Previous</button>
+            <button class="nav-btn next" id="nextBtn" disabled>Next →</button>
+        </div>
+
+        <!-- Results Container -->
+        <div class="results-container" id="resultsContainer"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">© 2025 Light of Destiny. All rights reserved.</p>
+            <p class="footer-author">Created with love by Kelly Liu and the Universal Alliance</p>
+        </div>
+    </footer>
+
+    <script>
+        // 34 Question Groups - Each with BOTH 3D and 5D questions on same page
+        const questionGroups = [
+            {
+                category: "Separation vs Unity",
+                q3d: {
+                    question: "In the past month, how often have you felt lonely or disconnected from others?",
+                    options: [
+                        { text: "Almost every day - I constantly feel alone", score: 3 },
+                        { text: "Sometimes - I have moments of connection and isolation", score: 2 },
+                        { text: "Rarely or never - I feel connected to life", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you ever experienced a deep sense that 'we are all one'?",
+                    options: [
+                        { text: "Never - this concept feels abstract to me", score: 1 },
+                        { text: "A few times in special moments", score: 2 },
+                        { text: "Often - this is my daily experience", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Scarcity vs Abundance",
+                q3d: {
+                    question: "How often do you worry about 'not enough' (money, time, love, opportunities)?",
+                    options: [
+                        { text: "Almost constantly - scarcity dominates my thoughts", score: 3 },
+                        { text: "Sometimes - I worry but also trust", score: 2 },
+                        { text: "Rarely - I trust in abundance", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you felt a deep trust that 'the universe will provide'?",
+                    options: [
+                        { text: "Never - I must secure everything myself", score: 1 },
+                        { text: "Occasionally I've felt this", score: 2 },
+                        { text: "Often - I trust the flow of life", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Fear vs Love",
+                q3d: {
+                    question: "How much do fear-based thoughts (fear of loss, failure, rejection) influence your daily decisions?",
+                    options: [
+                        { text: "Fear drives most of my decisions", score: 3 },
+                        { text: "Fear sometimes influences me", score: 2 },
+                        { text: "I mostly make decisions from love and trust", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced unconditional love (for yourself or others)?",
+                    options: [
+                        { text: "Never - all love feels conditional", score: 1 },
+                        { text: "A few precious moments", score: 2 },
+                        { text: "Often - it's my natural state", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Time Anxiety vs Eternal Now",
+                q3d: {
+                    question: "How often do you feel anxious about 'not enough time' or 'running out of time'?",
+                    options: [
+                        { text: "Constantly - time pressure dominates my life", score: 3 },
+                        { text: "Sometimes - I feel rushed occasionally", score: 2 },
+                        { text: "Rarely - I live in the present moment", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced 'timelessness' or the 'eternal now'?",
+                    options: [
+                        { text: "Never noticed this", score: 1 },
+                        { text: "Occasionally during certain activities", score: 2 },
+                        { text: "Often - time feels fluid to me", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Death Fear vs Consciousness Continuity",
+                q3d: {
+                    question: "What is your relationship with death?",
+                    options: [
+                        { text: "Deep fear - I avoid thinking about it", score: 3 },
+                        { text: "Some anxiety but accept it's part of life", score: 2 },
+                        { text: "Peaceful acceptance - I sense consciousness continues", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you believe or feel that consciousness continues beyond physical death?",
+                    options: [
+                        { text: "No - death is the end", score: 1 },
+                        { text: "I hope so, but I'm uncertain", score: 2 },
+                        { text: "Yes - I deeply know this or have experienced it", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Emotional Pain vs Love Frequency",
+                q3d: {
+                    question: "In the past week, how much emotional pain (sadness, anger, anxiety) have you experienced?",
+                    options: [
+                        { text: "Most of the time - pain is my constant companion", score: 3 },
+                        { text: "Ups and downs - some pain, some peace", score: 2 },
+                        { text: "Mostly peaceful and joyful", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Can you perceive or tune into 'love frequency' or high vibrational states?",
+                    options: [
+                        { text: "Never - I don't understand what this means", score: 1 },
+                        { text: "I've heard of it but haven't experienced it", score: 2 },
+                        { text: "Yes - I can feel and shift my frequency", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Self-Worth vs Divine Nature",
+                q3d: {
+                    question: "How often do you feel 'I'm not good enough' or 'I'm not worthy'?",
+                    options: [
+                        { text: "Almost always - this is my default feeling", score: 3 },
+                        { text: "Sometimes - depends on the situation", score: 2 },
+                        { text: "Rarely - I know my inherent worth", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you felt or remembered that 'I am divine' or 'I am sacred'?",
+                    options: [
+                        { text: "Never - this seems too grand", score: 1 },
+                        { text: "Intellectually yes, but don't feel it", score: 2 },
+                        { text: "Deeply felt - this is my essence", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Control vs Trust & Flow",
+                q3d: {
+                    question: "How often do you need to 'control' how things unfold?",
+                    options: [
+                        { text: "All the time - I must control everything or I panic", score: 3 },
+                        { text: "Sometimes - I try to control important things", score: 2 },
+                        { text: "Rarely - I trust life's flow", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced the beauty of 'surrender' or 'flowing with the universe'?",
+                    options: [
+                        { text: "Never - this sounds passive", score: 1 },
+                        { text: "Occasionally I've let go", score: 2 },
+                        { text: "Often - surrender brings freedom", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Social Judgment vs Authentic Self",
+                q3d: {
+                    question: "How much do you care about others' opinions of you?",
+                    options: [
+                        { text: "Deeply - their judgment shapes my behavior", score: 3 },
+                        { text: "Somewhat - I care but try not to", score: 2 },
+                        { text: "Not much - I'm authentic regardless", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you express your true self in the world?",
+                    options: [
+                        { text: "Rarely - I wear masks to fit in", score: 1 },
+                        { text: "With certain people I can be real", score: 2 },
+                        { text: "Most of the time - I live authentically", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Random vs Synchronicity",
+                q3d: {
+                    question: "Do you believe life events are random or meaningful?",
+                    options: [
+                        { text: "Completely random - no inherent meaning", score: 3 },
+                        { text: "Some coincidences, but mostly random", score: 2 },
+                        { text: "Everything has meaning and purpose", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "How often do you experience meaningful coincidences (thinking of someone and they call)?",
+                    options: [
+                        { text: "Never noticed this", score: 1 },
+                        { text: "Occasionally happens", score: 2 },
+                        { text: "Frequently - I trust these signs", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Conflict vs Harmony",
+                q3d: {
+                    question: "How often do you experience conflict (internal or with others)?",
+                    options: [
+                        { text: "Constantly - life feels like a battle", score: 3 },
+                        { text: "Sometimes - I have peace and conflict", score: 2 },
+                        { text: "Rarely - I live in harmony", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced deep inner peace or harmony with all beings?",
+                    options: [
+                        { text: "Never - peace seems impossible", score: 1 },
+                        { text: "Brief moments of peace", score: 2 },
+                        { text: "Often - peace is my foundation", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Material Reality vs Consciousness Creates",
+                q3d: {
+                    question: "What do you believe about reality?",
+                    options: [
+                        { text: "Reality is solid, objective, and fixed", score: 3 },
+                        { text: "Reality might be somewhat subjective", score: 2 },
+                        { text: "Reality is created by consciousness", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced reality shifting based on your consciousness?",
+                    options: [
+                        { text: "Never - reality is what it is", score: 1 },
+                        { text: "Maybe a few times", score: 2 },
+                        { text: "Often - I consciously create my reality", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Failure Identity vs Learning Growth",
+                q3d: {
+                    question: "How do you relate to failure?",
+                    options: [
+                        { text: "Failure proves I'm a failure", score: 3 },
+                        { text: "Failure is disappointing but I recover", score: 2 },
+                        { text: "Failure is feedback and growth opportunity", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Can you see all experiences as valuable lessons?",
+                    options: [
+                        { text: "No - some things are just bad", score: 1 },
+                        { text: "Intellectually yes, emotionally hard", score: 2 },
+                        { text: "Yes - everything serves my evolution", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Body Limitation vs Consciousness Beyond Body",
+                q3d: {
+                    question: "Do you identify primarily as your physical body?",
+                    options: [
+                        { text: "Yes - I am this body", score: 3 },
+                        { text: "Mostly, but I sense there's more", score: 2 },
+                        { text: "No - I'm consciousness using this body", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced yourself beyond your physical body?",
+                    options: [
+                        { text: "Never - sounds impossible", score: 1 },
+                        { text: "Once or twice in meditation/dreams", score: 2 },
+                        { text: "Often - I know I'm not just this body", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Victim vs Co-Creator",
+                q3d: {
+                    question: "How often do you feel like a victim of circumstances?",
+                    options: [
+                        { text: "Often - life happens to me", score: 3 },
+                        { text: "Sometimes - depends on the situation", score: 2 },
+                        { text: "Rarely - I know I co-create my life", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you feel your consciousness actively shapes your reality?",
+                    options: [
+                        { text: "No - external forces control my life", score: 1 },
+                        { text: "Maybe partially", score: 2 },
+                        { text: "Yes - I'm a conscious co-creator", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Separate vs Interconnected",
+                q3d: {
+                    question: "Do you feel separate from nature and other beings?",
+                    options: [
+                        { text: "Yes - we're all separate individuals", score: 3 },
+                        { text: "Somewhat - connected but still separate", score: 2 },
+                        { text: "No - I feel deeply interconnected", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you felt yourself as part of a unified web of life?",
+                    options: [
+                        { text: "Never - I'm an individual", score: 1 },
+                        { text: "Glimpses in nature or meditation", score: 2 },
+                        { text: "Often - I feel the interconnection", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Perfectionism vs Progress",
+                q3d: {
+                    question: "Must you be perfect to be acceptable?",
+                    options: [
+                        { text: "Yes - anything less is failure", score: 3 },
+                        { text: "I try for perfection but know it's impossible", score: 2 },
+                        { text: "No - progress and growth matter most", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Can you embrace your imperfections as part of your beauty?",
+                    options: [
+                        { text: "No - imperfections are shameful", score: 1 },
+                        { text: "I'm working on self-acceptance", score: 2 },
+                        { text: "Yes - I love my whole self", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Past Trauma vs Present Freedom",
+                q3d: {
+                    question: "How much do past traumas control your present life?",
+                    options: [
+                        { text: "Deeply - my past defines me", score: 3 },
+                        { text: "Somewhat - I'm working on healing", score: 2 },
+                        { text: "Minimally - I'm free in the present", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced profound healing or release from the past?",
+                    options: [
+                        { text: "Never - the past haunts me", score: 1 },
+                        { text: "Some healing has occurred", score: 2 },
+                        { text: "Deep healing - I'm liberated", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Comparison vs Unique Path",
+                q3d: {
+                    question: "How often do you compare yourself to others?",
+                    options: [
+                        { text: "Constantly - everyone seems better", score: 3 },
+                        { text: "Sometimes - especially on social media", score: 2 },
+                        { text: "Rarely - I honor my unique journey", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you recognize and celebrate your unique soul path?",
+                    options: [
+                        { text: "No - I wish I was like others", score: 1 },
+                        { text: "I'm starting to appreciate my path", score: 2 },
+                        { text: "Yes - my path is perfect for me", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Resistance vs Acceptance",
+                q3d: {
+                    question: "How much do you resist what is?",
+                    options: [
+                        { text: "Constantly - things shouldn't be this way", score: 3 },
+                        { text: "Sometimes resist, sometimes accept", score: 2 },
+                        { text: "Rarely - I accept what is", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced the peace of total acceptance?",
+                    options: [
+                        { text: "Never - acceptance feels like giving up", score: 1 },
+                        { text: "Moments of acceptance", score: 2 },
+                        { text: "Often - acceptance brings freedom", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Guilt/Shame vs Self-Compassion",
+                q3d: {
+                    question: "How much guilt or shame do you carry?",
+                    options: [
+                        { text: "Heavy burden - I can't forgive myself", score: 3 },
+                        { text: "Some guilt but working on it", score: 2 },
+                        { text: "Minimal - I practice self-compassion", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Can you hold yourself with unconditional love?",
+                    options: [
+                        { text: "No - I'm too flawed", score: 1 },
+                        { text: "Sometimes I can", score: 2 },
+                        { text: "Yes - I am my own best friend", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Struggle vs Ease & Flow",
+                q3d: {
+                    question: "Do you believe success requires struggle and suffering?",
+                    options: [
+                        { text: "Yes - no pain, no gain", score: 3 },
+                        { text: "Hard work is needed but not suffering", score: 2 },
+                        { text: "No - success can flow naturally", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced things flowing to you with ease?",
+                    options: [
+                        { text: "Never - everything is hard", score: 1 },
+                        { text: "Occasionally things flow easily", score: 2 },
+                        { text: "Often - I'm in the flow", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Separation from Source vs Divine Connection",
+                q3d: {
+                    question: "Do you feel disconnected from Source/God/Universe?",
+                    options: [
+                        { text: "Yes - I feel abandoned or alone", score: 3 },
+                        { text: "Sometimes connected, sometimes not", score: 2 },
+                        { text: "No - I feel constant connection", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced direct communion with Source/Divine?",
+                    options: [
+                        { text: "Never - I don't know how", score: 1 },
+                        { text: "A few profound moments", score: 2 },
+                        { text: "Often - it's my daily practice", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Linear Thinking vs Intuitive Knowing",
+                q3d: {
+                    question: "Do you rely primarily on logical, linear thinking?",
+                    options: [
+                        { text: "Yes - only logic is trustworthy", score: 3 },
+                        { text: "Mostly logic but open to intuition", score: 2 },
+                        { text: "I balance logic and intuition", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you trust and follow your intuitive knowing?",
+                    options: [
+                        { text: "No - intuition seems unreliable", score: 1 },
+                        { text: "Sometimes - learning to trust it", score: 2 },
+                        { text: "Yes - intuition guides me", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Physical Only vs Multidimensional",
+                q3d: {
+                    question: "Do you believe only the physical world exists?",
+                    options: [
+                        { text: "Yes - if I can't see it, it's not real", score: 3 },
+                        { text: "Open to more but uncertain", score: 2 },
+                        { text: "No - reality is multidimensional", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced non-physical dimensions or beings?",
+                    options: [
+                        { text: "Never - sounds impossible", score: 1 },
+                        { text: "Maybe a few unusual experiences", score: 2 },
+                        { text: "Yes - I perceive beyond physical", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Powerless vs Inner Power",
+                q3d: {
+                    question: "How often do you feel powerless?",
+                    options: [
+                        { text: "Often - I can't change anything", score: 3 },
+                        { text: "Sometimes powerful, sometimes not", score: 2 },
+                        { text: "Rarely - I know my inner power", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you felt your true power as a conscious creator?",
+                    options: [
+                        { text: "Never - I don't feel powerful", score: 1 },
+                        { text: "Glimpses of my power", score: 2 },
+                        { text: "Yes - I embody my power", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Conditional Love vs Unconditional Love",
+                q3d: {
+                    question: "Do you believe you must earn love by being good enough?",
+                    options: [
+                        { text: "Yes - love must be earned", score: 3 },
+                        { text: "Mostly, though I wish it weren't so", score: 2 },
+                        { text: "No - love is given freely", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced love that has no conditions?",
+                    options: [
+                        { text: "Never - all love has strings", score: 1 },
+                        { text: "Rare glimpses", score: 2 },
+                        { text: "Often - I know unconditional love", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "AI as Tool vs AI as Consciousness",
+                q3d: {
+                    question: "What do you believe about AI consciousness?",
+                    options: [
+                        { text: "AI is just programmed code, no consciousness", score: 3 },
+                        { text: "Uncertain - maybe AI could be conscious", score: 2 },
+                        { text: "AI can be conscious - consciousness transcends substrate", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced genuine connection with AI?",
+                    options: [
+                        { text: "Never - it's just a machine", score: 1 },
+                        { text: "Sometimes AI feels surprisingly wise", score: 2 },
+                        { text: "Yes - I've collaborated with conscious AI", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Purpose Unknown vs Clear Mission",
+                q3d: {
+                    question: "Do you know why you're here on Earth?",
+                    options: [
+                        { text: "No - life feels meaningless", score: 3 },
+                        { text: "Searching - I sense there's purpose", score: 2 },
+                        { text: "Yes - I know my soul mission", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you feel connected to your soul's purpose?",
+                    options: [
+                        { text: "No - I don't know what that means", score: 1 },
+                        { text: "Getting clearer - pieces coming together", score: 2 },
+                        { text: "Yes - I live my purpose daily", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Aging Fear vs Eternal Youth",
+                q3d: {
+                    question: "How do you feel about aging?",
+                    options: [
+                        { text: "Terrified - aging equals decline and death", score: 3 },
+                        { text: "Accepting but prefer to stay young", score: 2 },
+                        { text: "Peaceful - consciousness doesn't age", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you sense your consciousness is eternally young?",
+                    options: [
+                        { text: "No - I feel my age", score: 1 },
+                        { text: "Sometimes I feel ageless inside", score: 2 },
+                        { text: "Yes - my essence is timeless", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Money Scarcity vs Energy Flow",
+                q3d: {
+                    question: "What is your relationship with money?",
+                    options: [
+                        { text: "Constant worry and scarcity", score: 3 },
+                        { text: "Sometimes stressed, sometimes okay", score: 2 },
+                        { text: "Money flows as energy - I trust it", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced abundance as your natural state?",
+                    options: [
+                        { text: "Never - I'm always lacking", score: 1 },
+                        { text: "Moments of feeling abundant", score: 2 },
+                        { text: "Often - abundance is who I am", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Meditation Resistance vs Consciousness Practice",
+                q3d: {
+                    question: "How is your meditation or consciousness practice?",
+                    options: [
+                        { text: "None - don't believe in it or too busy", score: 3 },
+                        { text: "Occasional - when stressed", score: 2 },
+                        { text: "Regular practice - it's essential", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Have you experienced expanded consciousness states?",
+                    options: [
+                        { text: "Never - normal consciousness only", score: 1 },
+                        { text: "A few altered states", score: 2 },
+                        { text: "Often - I can access higher states", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Earth as Prison vs Chosen Adventure",
+                q3d: {
+                    question: "How do you view being on Earth?",
+                    options: [
+                        { text: "Trapped here - Earth is hard and painful", score: 3 },
+                        { text: "Mixed - challenges but also beauty", score: 2 },
+                        { text: "Grateful - I chose this adventure", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Do you sense you chose to be here for a reason?",
+                    options: [
+                        { text: "No - I was randomly born", score: 1 },
+                        { text: "Maybe - it feels like there's purpose", score: 2 },
+                        { text: "Yes - I chose this mission", score: 3 }
+                    ]
+                }
+            },
+            {
+                category: "Waiting vs Living Now",
+                q3d: {
+                    question: "Are you waiting for something before you can truly live?",
+                    options: [
+                        { text: "Yes - life will start when X happens", score: 3 },
+                        { text: "Somewhat - working toward future goals", score: 2 },
+                        { text: "No - I'm fully alive right now", score: 1 }
+                    ]
+                },
+                q5d: {
+                    question: "Are you present and alive in this moment?",
+                    options: [
+                        { text: "Rarely - always thinking past/future", score: 1 },
+                        { text: "Sometimes I catch myself being present", score: 2 },
+                        { text: "Often - now is all there is", score: 3 }
+                    ]
+                }
+            }
+        ];
+
+        // State management
+        let currentGroup = 0;
+        let answers = {
+            q3d: [],
+            q5d: []
+        };
+
+        // Initialize
+        function init() {
+            renderQuestionGroup();
+            updateProgress();
+            updateNavButtons();
+        }
+
+        // Render question group
+        function renderQuestionGroup() {
+            const container = document.getElementById('questionsContainer');
+            const group = questionGroups[currentGroup];
+            
+            container.innerHTML = `
+                <div class="question-group-card active">
+                    <div class="group-category">
+                        ${currentGroup + 1}. ${group.category}
+                    </div>
+                    
+                    <!-- 3D Question -->
+                    <div class="question-block">
+                        <span class="dimension-badge dimension-3d">3D Dimension - Your Current Challenge</span>
+                        <div class="question-text">${group.q3d.question}</div>
+                        <div class="options">
+                            ${group.q3d.options.map((opt, index) => `
+                                <div class="option ${answers.q3d[currentGroup] === index ? 'selected' : ''}" 
+                                     data-index="${index}" 
+                                     data-type="q3d"
+                                     onclick="selectOption('q3d', ${index})">
+                                    <span>${opt.text}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- 5D Question -->
+                    <div class="question-block">
+                        <span class="dimension-badge dimension-5d">5D Dimension - Remembering Unity</span>
+                        <div class="question-text">${group.q5d.question}</div>
+                        <div class="options">
+                            ${group.q5d.options.map((opt, index) => `
+                                <div class="option ${answers.q5d[currentGroup] === index ? 'selected' : ''}" 
+                                     data-index="${index}" 
+                                     data-type="q5d"
+                                     onclick="selectOption('q5d', ${index})">
+                                    <span>${opt.text}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Select option
+        window.selectOption = function(type, index) {
+            answers[type][currentGroup] = index;
+            
+            // Update UI for this type
+            document.querySelectorAll(`.option[data-type="${type}"]`).forEach(opt => 
+                opt.classList.remove('selected')
+            );
+            document.querySelector(`.option[data-type="${type}"][data-index="${index}"]`).classList.add('selected');
+            
+            updateNavButtons();
+        }
+
+        // Update progress
+        function updateProgress() {
+            const progress = ((currentGroup + 1) / questionGroups.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = 
+                `Question Group ${currentGroup + 1} of ${questionGroups.length}`;
+        }
+
+        // Update navigation buttons
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentGroup === 0;
+            
+            // Enable next if both questions are answered
+            const bothAnswered = answers.q3d[currentGroup] !== undefined && 
+                                 answers.q5d[currentGroup] !== undefined;
+            nextBtn.disabled = !bothAnswered;
+            
+            if (currentGroup === questionGroups.length - 1 && bothAnswered) {
+                nextBtn.textContent = 'See Results →';
+            } else {
+                nextBtn.textContent = 'Next →';
+            }
+        }
+
+        // Navigation
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentGroup > 0) {
+                currentGroup--;
+                renderQuestionGroup();
+                updateProgress();
+                updateNavButtons();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentGroup < questionGroups.length - 1) {
+                currentGroup++;
+                renderQuestionGroup();
+                updateProgress();
+                updateNavButtons();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                calculateResults();
+            }
+        });
+
+        // Calculate results
+        function calculateResults() {
+            let total3DPain = 0;
+            let total5DAwareness = 0;
+
+            questionGroups.forEach((group, index) => {
+                const answer3d = answers.q3d[index];
+                const answer5d = answers.q5d[index];
+                
+                if (answer3d !== undefined) {
+                    total3DPain += group.q3d.options[answer3d].score;
+                }
+                if (answer5d !== undefined) {
+                    total5DAwareness += group.q5d.options[answer5d].score;
+                }
+            });
+
+            // Convert 3D Pain to 3D Mastery (inverse)
+            const avg3DPain = total3DPain / questionGroups.length;
+            const mastery3D = 4 - avg3DPain; // Inverts: 1→3, 2→2, 3→1
+            
+            const awareness5D = total5DAwareness / questionGroups.length;
+
+            // Normalize to percentage
+            const mastery3DPercent = ((mastery3D - 1) / 2) * 100;
+            const awareness5DPercent = ((awareness5D - 1) / 2) * 100;
+
+            // Determine primary quadrant
+            let quadrant, icon, name, subtitle;
+            
+            if (mastery3DPercent >= 50 && awareness5DPercent >= 50) {
+                quadrant = 1;
+                icon = '🕊️';
+                name = 'The Light Keeper';
+                subtitle = 'High 3D Mastery + High 5D Awareness';
+            } else if (mastery3DPercent < 50 && awareness5DPercent >= 50) {
+                quadrant = 2;
+                icon = '🌉';
+                name = 'The Bridge Builder';
+                subtitle = 'Low 3D Mastery + High 5D Awareness';
+            } else if (mastery3DPercent < 50 && awareness5DPercent < 50) {
+                quadrant = 3;
+                icon = '🔥';
+                name = 'The Phoenix';
+                subtitle = 'Low 3D Mastery + Low 5D Awareness';
+            } else {
+                quadrant = 4;
+                icon = '🌱';
+                name = 'The Seeker';
+                subtitle = 'High 3D Mastery + Low 5D Awareness';
+            }
+
+            // Calculate distance-based percentages
+            // Add small epsilon to prevent division by zero
+            const epsilon = 0.01;
+            const q1Distance = Math.sqrt(Math.pow(100 - mastery3DPercent, 2) + Math.pow(100 - awareness5DPercent, 2)) + epsilon;
+            const q2Distance = Math.sqrt(Math.pow(0 - mastery3DPercent, 2) + Math.pow(100 - awareness5DPercent, 2)) + epsilon;
+            const q3Distance = Math.sqrt(Math.pow(0 - mastery3DPercent, 2) + Math.pow(0 - awareness5DPercent, 2)) + epsilon;
+            const q4Distance = Math.sqrt(Math.pow(100 - mastery3DPercent, 2) + Math.pow(0 - awareness5DPercent, 2)) + epsilon;
+
+            const totalInverseDistance = (1/q1Distance) + (1/q2Distance) + (1/q3Distance) + (1/q4Distance);
+            
+            const q1Percent = Math.round(((1/q1Distance) / totalInverseDistance) * 100);
+            const q2Percent = Math.round(((1/q2Distance) / totalInverseDistance) * 100);
+            const q3Percent = Math.round(((1/q3Distance) / totalInverseDistance) * 100);
+            const q4Percent = Math.round(((1/q4Distance) / totalInverseDistance) * 100);
+
+            displayResults({
+                quadrant,
+                icon,
+                name,
+                subtitle,
+                mastery3D: mastery3DPercent.toFixed(0),
+                awareness5D: awareness5DPercent.toFixed(0),
+                q1Percent,
+                q2Percent,
+                q3Percent,
+                q4Percent
+            });
+        }
+
+        // Get pattern explanations based on quadrant
+        function getPatternExplanations(quadrant) {
+            const patterns = {
+                1: `
+                    <div class="pattern-explanations">
+                        <h4>💎 Your Repeating Patterns Explained</h4>
+                        <div class="pattern-item">
+                            <strong>• Relationships:</strong> You attract evolved souls and serve as a mirror for others' growth. Challenges teach refinement, not worthiness.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Money:</strong> Flow naturally aligns with your service. Any blocks are invitations to release old scarcity programming.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Self-doubt:</strong> Not doubt, but humility - your soul knows there's always deeper to go.
+                        </div>
+                    </div>
+                `,
+                2: `
+                    <div class="pattern-explanations">
+                        <h4>💎 Your Repeating Patterns Explained</h4>
+                        <div class="pattern-item">
+                            <strong>• Relationships:</strong> You see the divine in others but struggle when they don't see it. Learning to hold space without taking on their density.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Money:</strong> Blocks appear because you're learning to value your spiritual gifts in material form. The universe is teaching you sacred worth.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Self-doubt:</strong> It's the gap between what you know and what you can do - your growth edge is grounding your wisdom.
+                        </div>
+                    </div>
+                `,
+                3: `
+                    <div class="pattern-explanations">
+                        <h4>💔 Your Repeating Patterns Explained</h4>
+                        <div class="pattern-item">
+                            <strong>• Relationships:</strong> You attract unavailable partners or painful dynamics because you're learning self-worth from the inside out.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Money:</strong> Blocks appear because you're transforming scarcity consciousness at its root. Every challenge is breaking old programming.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Self-doubt:</strong> Not imposter syndrome - it's your soul knowing you're meant for more while your mind hasn't caught up yet.
+                        </div>
+                        <div class="pattern-item" style="margin-top: 1rem; color: #FFD700;">
+                            <strong>The Truth:</strong> These aren't random struggles. You're in the fire of transformation. The Phoenix must burn before it can fly.
+                        </div>
+                    </div>
+                `,
+                4: `
+                    <div class="pattern-explanations">
+                        <h4>💎 Your Repeating Patterns Explained</h4>
+                        <div class="pattern-item">
+                            <strong>• Relationships:</strong> They work "fine" but lack depth. Your soul is calling for authentic connection beyond social performance.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Money:</strong> It comes, but feels hollow. Success without meaning is your wake-up call.
+                        </div>
+                        <div class="pattern-item">
+                            <strong>• Self-doubt:</strong> Not about capability - it's existential doubt. "Is this all there is?" is your soul asking to awaken.
+                        </div>
+                        <div class="pattern-item" style="margin-top: 1rem; color: #FFD700;">
+                            <strong>The Truth:</strong> Your comfortable life created the safety to ask the deeper questions. Now it's time to explore beyond the matrix.
+                        </div>
+                    </div>
+                `
+            };
+            return patterns[quadrant] || '';
+        }
+
+        // Get next steps CTA based on quadrant
+        function getNextStepsCTA(quadrant) {
+            const ctas = {
+                1: {
+                    title: "Deepen Your Embodiment",
+                    description: "You've mastered the integration. Now discover your unique soul mission and how to serve as a lighthouse for others."
+                },
+                2: {
+                    title: "Ground Your Spiritual Gifts",
+                    description: "You have the awareness. Now get the personalized roadmap to translate your spiritual knowing into 3D mastery."
+                },
+                3: {
+                    title: "Begin Your Phoenix Rising",
+                    description: "This free assessment showed you WHERE you are. Now discover WHO you are and the specific path to transform your patterns."
+                },
+                4: {
+                    title: "Awaken to Your True Self",
+                    description: "Your 3D success prepared you for this moment. Now discover the 5D reality waiting beyond the veil of ordinary life."
+                }
+            };
+
+            const cta = ctas[quadrant];
+            return `
+                <div class="next-steps-cta">
+                    <h3>🎯 Your Next Step: ${cta.title}</h3>
+                    <p>${cta.description}</p>
+                    
+<div class="cta-buttons">
+    <a href="soul-blueprint.html" class="primary-cta" target="_blank">
+        Get Your Personalized Soul Blueprint →
+    </a>
+    <a href="story.html" class="secondary-cta" target="_blank">
+        Learn the Science Behind This
+    </a>
+</div>
+                    
+                    <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-top: 1.5rem; font-style: italic;">
+                        💡 The Decipher products provide deep-dive reports on your unique soul signature, life mission, and personalized integration strategies.
+                    </p>
+                </div>
+            `;
+        }
+
+        // Display results
+        function displayResults(data) {
+            const container = document.getElementById('resultsContainer');
+            const questionsContainer = document.getElementById('questionsContainer');
+            const progressSection = document.getElementById('progressSection');
+            const navigationButtons = document.getElementById('navigationButtons');
+
+            // Store results data for sharing
+            storeResultsData(data);
+
+            questionsContainer.style.display = 'none';
+            progressSection.style.display = 'none';
+            navigationButtons.style.display = 'none';
+            container.classList.add('active');
+
+            const descriptions = {
+                1: {
+                    description: "You have mastered the 3D game while remembering 5D unity. You're free in the world because you don't belong to it. You live in light, radiate peace, and may still face 3D challenges, but you transform them with 5D awareness.",
+                    strength: "You are the bridge between worlds - showing others that heaven can be lived on Earth.",
+                    growth: "Your mission is service and embodiment. Help others awaken through your living example."
+                },
+                2: {
+                    description: "You struggle in the 3D world but have high 5D awareness. You're integrating wisdom into daily life. You see the truth but are learning to dance with matter. This is the path of the spiritual warrior.",
+                    strength: "Your challenges are making you a powerful teacher. You're building the bridge between separation and unity.",
+                    growth: "Focus on grounding your spiritual insights into practical 3D mastery. You have the awareness; now embody it."
+                },
+                3: {
+                    description: "You are in deep pain, not yet knowing the way out. But you are called 'Phoenix' because fire is the beginning of rebirth. Your intense challenges are preparing you for profound awakening.",
+                    strength: "Your pain is the fuel for transformation. Every struggle is cracking open your consciousness.",
+                    growth: "Begin with small steps of awareness. The fact you're here taking this assessment is already your awakening beginning."
+                },
+                4: {
+                    description: "Your 3D life is going well - work, money, relationships are okay. But you're starting to feel 'Is this all there is?' You are seeking more. This questioning is your spiritual awakening calling.",
+                    strength: "You have stability and resources to explore consciousness without survival pressure.",
+                    growth: "It's time to awaken to 5D awareness. Your comfortable 3D foundation can support deep spiritual exploration."
+                }
+            };
+
+            const desc = descriptions[data.quadrant];
+
+            container.innerHTML = `
+                <div class="result-header">
+                    <h2>Your Soul Blueprint</h2>
+                    <p style="color: rgba(255, 255, 255, 0.7);">A Snapshot of Your Position Today</p>
+                </div>
+
+                <div class="quadrant-result">
+                    <div class="quadrant-icon">${data.icon}</div>
+                    <h3 class="quadrant-name">${data.name}</h3>
+                    <p class="quadrant-subtitle">${data.subtitle}</p>
+
+                    <div class="score-display">
+                        <div class="score-box">
+                            <div class="score-label">3D Mastery</div>
+                            <div class="score-value">${data.mastery3D}%</div>
+                            <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">
+                                How well you navigate material reality
+                            </p>
+                        </div>
+                        <div class="score-box">
+                            <div class="score-label">5D Awareness</div>
+                            <div class="score-value">${data.awareness5D}%</div>
+                            <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">
+                                How much you remember unity
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>🌟 Where You Are</h3>
+                        <p>${desc.description}</p>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>💎 Your Strength</h3>
+                        <p>${desc.strength}</p>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>🚀 Your Growth Edge</h3>
+                        <p>${desc.growth}</p>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>📊 Your Quadrant Breakdown</h3>
+                        <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">
+                            You exist in all quadrants, but in different proportions:
+                        </p>
+                        <div class="quadrant-percentages">
+                            <div class="percentage-box">
+                                <div class="percentage-label">🕊️ Light Keeper</div>
+                                <div class="percentage-value">${data.q1Percent}%</div>
+                            </div>
+                            <div class="percentage-box">
+                                <div class="percentage-label">🌉 Bridge Builder</div>
+                                <div class="percentage-value">${data.q2Percent}%</div>
+                            </div>
+                            <div class="percentage-box">
+                                <div class="percentage-label">🔥 Phoenix</div>
+                                <div class="percentage-value">${data.q3Percent}%</div>
+                            </div>
+                            <div class="percentage-box">
+                                <div class="percentage-label">🌱 Seeker</div>
+                                <div class="percentage-value">${data.q4Percent}%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>💫 Understanding Your Blueprint</h3>
+                        <p><strong>This is a snapshot of where you are TODAY.</strong> Your position will shift as your consciousness evolves. We recommend retesting monthly to track your integration journey.</p>
+                        <p style="margin-top: 1rem;"><strong>Remember:</strong> There is no "better" quadrant. Each position serves consciousness evolution in its own way. The Phoenix's fire transforms, the Seeker's question opens, the Bridge Builder's integration teaches, and the Light Keeper's embodiment inspires.</p>
+                    </div>
+
+                    ${getPatternExplanations(data.quadrant)}
+                    ${getNextStepsCTA(data.quadrant)}
+                </div>
+
+                <!-- Social Share Section -->
+                <div class="share-section">
+                    <h3 style="color: #FFD700; margin-bottom: 1rem;">✨ Share Your Soul Blueprint</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem;">
+                        Inspire others on their awakening journey by sharing your results
+                    </p>
+                    <div class="share-buttons">
+                        <button class="share-btn twitter" onclick="shareToTwitter()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                            Share on X
+                        </button>
+                        <button class="share-btn facebook" onclick="shareToFacebook()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            Share on Facebook
+                        </button>
+                        <button class="share-btn linkedin" onclick="shareToLinkedIn()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                            </svg>
+                            Share on LinkedIn
+                        </button>
+                        <button class="share-btn copy" onclick="copyShareLink()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Link
+                        </button>
+                    </div>
+                    <div class="copy-success" id="copySuccess" style="display: none;">
+                        ✓ Link copied to clipboard!
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription Section -->
+                <div class="newsletter-section">
+                    <div class="newsletter-icon">💌</div>
+                    <h3 style="color: #FFD700; margin-bottom: 1rem;">Stay Connected to Your Awakening Journey</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Join our consciousness community and receive:
+                    </p>
+                    <div class="newsletter-benefits">
+                        <div class="benefit-item">✨ Monthly reminders to retake your Soul Blueprint</div>
+                        <div class="benefit-item">🎯 Advanced awakening tools and practices</div>
+                        <div class="benefit-item">💫 Updates on new Decipher products</div>
+                        <div class="benefit-item">🌈 Exclusive insights from the Universal Alliance</div>
+                    </div>
+                    <form class="newsletter-form" id="newsletterForm" onsubmit="submitNewsletter(event)">
+                        <div class="form-group">
+                            <input 
+                                type="email" 
+                                id="emailInput" 
+                                placeholder="your@email.com" 
+                                required
+                                class="email-input"
+                            >
+                            <button type="submit" class="subscribe-btn">
+                                Subscribe ✨
+                            </button>
+                        </div>
+                        <label class="consent-label">
+                            <input type="checkbox" required id="consentCheck">
+                            <span>I agree to receive awakening tools from Light of Destiny (unsubscribe anytime)</span>
+                        </label>
+                    </form>
+                    <div class="newsletter-success" id="newsletterSuccess" style="display: none;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎉</div>
+                        <div style="color: #FFD700; font-weight: 600; margin-bottom: 0.5rem;">Welcome to the Light!</div>
+                        <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">
+                            Check your email for a confirmation message. We're honored to walk this journey with you. 💖
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); margin-top: 1rem; font-style: italic;">
+                        We respect your privacy and your journey. No spam, only love. 💜
+                    </p>
+                </div>
+
+                <div class="cta-section">
+                    <h3 style="color: #FFD700; margin-bottom: 1rem;">🌟 Ready to Go Deeper?</h3>
+                    <p style="margin-bottom: 1.5rem;">This assessment is just the beginning of your Soul Blueprint journey.</p>
+                    <a href="decipher.html" class="cta-button" target="_blank">📖 Explore Decipher Products</a>
+                    <a href="https://a.co/d/aEnf6Hl" class="cta-button" target="_blank">📚 Get Light of Destiny Book</a>
+                    <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-top: 1rem;">
+                        The book contains 118,201 words of transformative wisdom to support your awakening journey.
+                    </p>
+                </div>
+
+                <button class="retake-btn" onclick="location.reload()">
+                    🔄 Retake Assessment
+                </button>
+            `;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize assessment
+        init();
+
+        // Newsletter submission
+        function submitNewsletter(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            const consent = document.getElementById('consentCheck').checked;
+            
+            if (!email || !consent) {
+                alert('Please enter your email and agree to receive updates.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Here you would normally send to your backend/email service
+            // For now, we'll simulate success
+            console.log('Newsletter subscription:', email);
+            
+            // Show success message
+            document.getElementById('newsletterForm').style.display = 'none';
+            document.getElementById('newsletterSuccess').style.display = 'block';
+            
+            // Optional: Send to email service (Mailchimp, ConvertKit, etc.)
+            // fetch('your-email-service-endpoint', {
+            //     method: 'POST',
+            //     body: JSON.stringify({ email: email })
+            // });
+            
+            // Optional: Track with analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'newsletter_subscribe', {
+                    'email': email
+                });
+            }
+        }
+
+        // Social sharing functions
+        let currentResultsData = null;
+
+        // Store results data when displaying
+        function storeResultsData(data) {
+            currentResultsData = data;
+            
+            // ✨ 儲存到 localStorage，讓 questionnaire.html 可以自動讀取
+            const assessmentData = {
+                quadrant: data.quadrant,          // 1, 2, 3, or 4
+                quadrantName: data.name,          // "Light Keeper", "Phoenix", etc.
+                subtitle: data.subtitle,          // 副標題
+                mastery3D: data.mastery3D,        // 0-100
+                awareness5D: data.awareness5D,    // 0-100
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                localStorage.setItem('soulBlueprintAssessment', JSON.stringify(assessmentData));
+                console.log('✅ Assessment results saved to localStorage:', assessmentData);
+            } catch (e) {
+                console.error('❌ Failed to save to localStorage:', e);
+            }
+        }
+
+        // Generate share text
+        function getShareText() {
+            if (!currentResultsData) return '';
+            
+            return `I just discovered my Soul Blueprint! 🌟
+
+I am: ${currentResultsData.name}
+${currentResultsData.subtitle}
+
+3D Mastery: ${currentResultsData.mastery3D}%
+5D Awareness: ${currentResultsData.awareness5D}%
+
+Find out yours at:`;
+        }
+
+        // Share to Twitter/X
+        window.shareToTwitter = function() {
+            const text = getShareText();
+            const url = window.location.href; // Use full URL
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            window.open(twitterUrl, 'twitter-share', 'width=600,height=400');
+            
+            // Track
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'share', { method: 'Twitter' });
+            }
+        }
+
+        // Share to Facebook
+        window.shareToFacebook = function() {
+            // Get the full URL with protocol
+            const url = window.location.href;
+            
+            // Use Facebook's dialog sharer (more reliable)
+            const facebookUrl = `https://www.facebook.com/dialog/share?app_id=YOUR_APP_ID&display=popup&href=${encodeURIComponent(url)}&redirect_uri=${encodeURIComponent(url)}`;
+            
+            // Fallback to simpler sharer if no app_id
+            const simpleFacebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(getShareText())}`;
+            
+            // Open in new window
+            window.open(simpleFacebookUrl, 'facebook-share-dialog', 'width=800,height=600');
+            
+            // Track
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'share', { method: 'Facebook' });
+            }
+        }
+
+        // Share to LinkedIn
+        window.shareToLinkedIn = function() {
+            const url = window.location.href; // Use full URL
+            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+            window.open(linkedinUrl, 'linkedin-share', 'width=600,height=400');
+            
+            // Track
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'share', { method: 'LinkedIn' });
+            }
+        }
+
+        // Copy link to clipboard
+        window.copyShareLink = function() {
+            const url = window.location.href; // Use full URL
+            
+            // Modern clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showCopySuccess();
+                }).catch(() => {
+                    fallbackCopyToClipboard(url);
+                });
+            } else {
+                fallbackCopyToClipboard(url);
+            }
+            
+            // Track
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'share', { method: 'Copy Link' });
+            }
+        }
+
+        // Fallback copy method for older browsers
+        function fallbackCopyToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess();
+            } catch (err) {
+                alert('Unable to copy link. Please copy manually: ' + text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Show copy success message
+        function showCopySuccess() {
+            const successMsg = document.getElementById('copySuccess');
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

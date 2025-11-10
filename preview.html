@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Soul Blueprint Preview - Light of Destiny</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Back Link - 跟 assessment 一樣 */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateX(-3px);
+        }
+
+        /* Header - 跟 assessment 結果頁一樣 */
+        .result-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .result-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .result-header .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .edition-badge {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            font-weight: 600;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Preview Notice - 明亮版 */
+        .preview-notice {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .preview-notice h3 {
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-notice p {
+            color: #666;
+            font-size: 1.05em;
+        }
+
+        /* 資料卡片 - 跟 assessment 一樣的風格 */
+        .info-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #999;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Assessment Results - 完全跟 assessment 結果頁一樣 */
+        .quadrant-result {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .quadrant-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .quadrant-name {
+            font-size: 1.8rem;
+            text-align: center;
+            background: linear-gradient(45deg, #FFD700, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .quadrant-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Score Display - 跟 assessment 一樣 */
+        .score-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .score-box {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .score-label {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .score-value {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Challenges Section */
+        .challenges-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .challenge-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .challenge-item:last-child {
+            border-bottom: none;
+        }
+
+        .challenge-item h4 {
+            color: #667eea;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .challenge-item p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #333;
+        }
+
+        .benefit-item .icon {
+            font-size: 1.3rem;
+        }
+
+        .benefit-item .text {
+            font-size: 0.95rem;
+        }
+
+        /* Sample Content */
+        .sample-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sample-content {
+            line-height: 1.8;
+            color: #555;
+            margin-top: 1.5rem;
+        }
+
+        .sample-content h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .sample-content p {
+            margin-bottom: 1rem;
+        }
+
+        .blur-overlay {
+            filter: blur(4px);
+            opacity: 0.5;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .unlock-message {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            border: 2px dashed rgba(102, 126, 234, 0.3);
+        }
+
+        .unlock-message .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .unlock-message .text {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Pricing - 跟 assessment CTA 一樣的風格 */
+        .pricing-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-section h2 {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #FFD700, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1.5rem 0;
+        }
+
+        .price-description {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 2rem;
+        }
+
+        /* CTA Button - 跟 assessment 一樣 */
+        .cta-section {
+            text-align: center;
+        }
+
+        .purchase-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #FFD700, #FF69B4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .purchase-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Guarantee */
+        .guarantee {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .guarantee h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .guarantee p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .edit-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .edit-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .result-header h1 {
+                font-size: 2rem;
+            }
+
+            .price {
+                font-size: 3rem;
+            }
+
+            .score-display {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Link -->
+        <a href="questionnaire.html" class="back-link">
+            ← Back to Questionnaire
+        </a>
+
+        <!-- Header -->
+        <div class="result-header">
+            <h1>✨ Your Soul Blueprint Preview</h1>
+            <p class="subtitle">Here's what your personalized report will include</p>
+            <span class="edition-badge" id="editionBadge">Loading...</span>
+        </div>
+
+        <!-- Preview Notice -->
+        <div class="preview-notice">
+            <h3>📋 Preview Mode</h3>
+            <p>This is a preview of your personalized Soul Blueprint report (15-20 pages)</p>
+        </div>
+
+        <!-- User Info -->
+        <div class="info-section">
+            <h3 class="section-title">Your Information</h3>
+            <div class="info-row">
+                <span class="info-label">Name</span>
+                <span class="info-value" id="userName">Loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Email</span>
+                <span class="info-value" id="userEmail">Loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Birth Date</span>
+                <span class="info-value" id="birthDate">Loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Life Stage</span>
+                <span class="info-value" id="lifeStage">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Assessment Results -->
+        <div class="quadrant-result" id="assessmentSection">
+            <div class="quadrant-icon" id="quadrantIcon">✨</div>
+            <div class="quadrant-name" id="quadrantName">Loading...</div>
+            <div class="quadrant-subtitle">Your Soul Blueprint Assessment</div>
+            
+            <div class="score-display">
+                <div class="score-box">
+                    <div class="score-label">3D Mastery</div>
+                    <div class="score-value"><span id="mastery3D">0</span>%</div>
+                </div>
+                <div class="score-box">
+                    <div class="score-label">5D Awareness</div>
+                    <div class="score-value"><span id="awareness5D">0</span>%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Challenges -->
+        <div class="challenges-section">
+            <h3 class="section-title">Your Current Challenges</h3>
+            <div class="challenge-item">
+                <h4>Challenge #1</h4>
+                <p id="challenge1">Loading...</p>
+            </div>
+            <div class="challenge-item">
+                <h4>Challenge #2</h4>
+                <p id="challenge2">Loading...</p>
+            </div>
+            <div class="challenge-item">
+                <h4>Challenge #3</h4>
+                <p id="challenge3">Loading...</p>
+            </div>
+        </div>
+
+        <!-- What You'll Receive -->
+        <div class="benefits-section">
+            <h3 class="section-title">What You'll Receive</h3>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="icon">📊</span>
+                    <span class="text">Complete Soul Analysis</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🎯</span>
+                    <span class="text">Personalized Action Steps</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🔮</span>
+                    <span class="text">Destiny Path Guidance</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">💪</span>
+                    <span class="text">Strength Analysis</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🌟</span>
+                    <span class="text">Growth Opportunities</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🧭</span>
+                    <span class="text">Life Purpose Insights</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">💖</span>
+                    <span class="text">Relationship Guidance</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🚀</span>
+                    <span class="text">Career Path Suggestions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Content -->
+        <div class="sample-section">
+            <h3 class="section-title">Sample from Your Report</h3>
+            <div class="sample-content">
+                <div class="blur-overlay">
+                    <h3>Understanding Your Soul Blueprint</h3>
+                    <p>As a Phoenix archetype, your soul carries the profound gift of transformation. You are drawn to experiences that push you beyond your comfort zone, not because you seek challenge for its own sake, but because your soul knows that growth happens in the fire of transformation...</p>
+                    <p>Your 3D mastery indicates that you're in a powerful phase of learning how to navigate the physical world while maintaining your spiritual connection. This is not a deficit - it's a sacred stage of integration...</p>
+                    <p>The challenges you've shared reveal deep wisdom about your current journey. Let's explore each one and uncover the hidden gifts within...</p>
+                </div>
+            </div>
+            <div class="unlock-message">
+                <div class="icon">🔓</div>
+                <div class="text">Unlock the complete 15-20 page personalized report</div>
+            </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="pricing-section">
+            <h2>Complete Your Soul Blueprint</h2>
+            <div class="price" id="priceDisplay">$47</div>
+            <p class="price-description">One-time payment • Delivered within 3 working days</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <button class="purchase-btn" id="purchaseBtn">
+                Get My Complete Soul Blueprint
+            </button>
+            
+            <div class="guarantee">
+                <h4>✨ Start Your Transformation Today</h4>
+                <p>Get instant clarity on your soul's journey and unlock your full potential</p>
+                <div style="margin-top: 15px; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 8px; color: #555;">
+                            <span style="font-size: 1.3rem;">⚡</span>
+                            <span style="font-size: 0.9rem;">Delivered in 3 working days</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; color: #555;">
+                            <span style="font-size: 1.3rem;">🔒</span>
+                            <span style="font-size: 0.9rem;">Secure payment</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; color: #555;">
+                            <span style="font-size: 1.3rem;">💜</span>
+                            <span style="font-size: 0.9rem;">Personalized for you</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="questionnaire.html" class="edit-link">← Edit your information</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuestionnaireData();
+            setupPurchaseButton();
+        });
+
+        function loadQuestionnaireData() {
+            const dataStr = sessionStorage.getItem('questionnaireData');
+            
+            if (!dataStr) {
+                console.warn('⚠️ No questionnaire data found');
+                alert('No data found. Redirecting to questionnaire...');
+                window.location.href = 'questionnaire.html';
+                return;
+            }
+
+            try {
+                const data = JSON.parse(dataStr);
+                console.log('✅ Loaded data:', data);
+
+                document.getElementById('userName').textContent = data.fullName || 'Not provided';
+                document.getElementById('userEmail').textContent = data.email || 'Not provided';
+                document.getElementById('birthDate').textContent = data.birthDate || 'Not provided';
+                document.getElementById('lifeStage').textContent = formatLifeStage(data.lifeStage);
+
+                const editionNames = {
+                    'seed': '🌱 Seed Edition',
+                    'bloom': '🌸 Bloom Edition',
+                    'legacy': '👑 Legacy Edition'
+                };
+                document.getElementById('editionBadge').textContent = editionNames[data.edition] || '🌱 Seed Edition';
+
+                const prices = {
+                    'seed': '$47',
+                    'bloom': '$67',
+                    'legacy': '$97'
+                };
+                document.getElementById('priceDisplay').textContent = prices[data.edition] || '$47';
+
+                if (data.assessmentData) {
+                    try {
+                        const assessment = JSON.parse(data.assessmentData);
+                        document.getElementById('quadrantName').textContent = assessment.quadrantName;
+                        document.getElementById('quadrantIcon').textContent = getQuadrantIcon(assessment.quadrant);
+                        document.getElementById('mastery3D').textContent = assessment.mastery3D;
+                        document.getElementById('awareness5D').textContent = assessment.awareness5D;
+                    } catch (e) {
+                        console.error('Failed to parse assessment data:', e);
+                        document.getElementById('quadrantName').textContent = formatQuadrant(data.quadrant);
+                        document.getElementById('quadrantIcon').textContent = getQuadrantIcon(data.quadrant);
+                        const scoresDiv = document.querySelector('.score-display');
+                        if (scoresDiv) scoresDiv.style.display = 'none';
+                    }
+                } else {
+                    document.getElementById('quadrantName').textContent = formatQuadrant(data.quadrant);
+                    document.getElementById('quadrantIcon').textContent = getQuadrantIcon(data.quadrant);
+                    const scoresDiv = document.querySelector('.score-display');
+                    if (scoresDiv) scoresDiv.style.display = 'none';
+                }
+
+                document.getElementById('challenge1').textContent = data.challenges[0] || 'Not provided';
+                document.getElementById('challenge2').textContent = data.challenges[1] || 'Not provided';
+                document.getElementById('challenge3').textContent = data.challenges[2] || 'Not provided';
+
+            } catch (e) {
+                console.error('❌ Failed to load data:', e);
+                alert('Error loading data. Please try again.');
+            }
+        }
+
+        function formatLifeStage(stage) {
+            const stages = {
+                'early-career': 'Early Career (20s)',
+                'establishing': 'Establishing (30s)',
+                'mastery': 'Mastery Phase (40s)',
+                'wisdom': 'Wisdom Years (50+)',
+                'transition': 'In Transition'
+            };
+            return stages[stage] || 'Not specified';
+        }
+
+        function formatQuadrant(quadrant) {
+            const quadrants = {
+                'light-keeper': '🕊️ Light Keeper',
+                'bridge-builder': '🌉 Bridge Builder',
+                'phoenix': '🔥 Phoenix',
+                'seeker': '🌱 Seeker',
+                'not-taken': 'Assessment Not Taken'
+            };
+            return quadrants[quadrant] || 'Unknown';
+        }
+
+        function getQuadrantIcon(quadrant) {
+            const icons = {
+                1: '🕊️',
+                2: '🌉',
+                3: '🔥',
+                4: '🌱',
+                'light-keeper': '🕊️',
+                'bridge-builder': '🌉',
+                'phoenix': '🔥',
+                'seeker': '🌱'
+            };
+            return icons[quadrant] || '✨';
+        }
+
+        function setupPurchaseButton() {
+            const btn = document.getElementById('purchaseBtn');
+            
+            btn.addEventListener('click', function() {
+                const dataStr = sessionStorage.getItem('questionnaireData');
+                const data = JSON.parse(dataStr);
+                
+                const stripeUrls = {
+                    'seed': 'https://buy.stripe.com/dRm14o4Xt7jga2Y446eIw09',
+                    'bloom': 'https://buy.stripe.com/6oU28sdtZdHEejegQSeIw0a',
+                    'legacy': 'https://buy.stripe.com/14A7sM61x0US1wscACeIw0b'
+                };
+                
+                const edition = data.edition || 'seed';
+                const url = stripeUrls[edition];
+                
+                console.log('🛒 Redirecting to Stripe:', url);
+                window.location.href = url;
+            });
+        }
+    </script>
+</body>
+</html>

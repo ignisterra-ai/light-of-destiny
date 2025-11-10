@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Light of Destiny</title>
+    <style>
+        html {
+            overflow-y: scroll !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #0d1123;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .brand-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .language-selector select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Blog Hero */
+        .blog-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .blog-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Blog Content Section */
+        .blog-content {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #1a1a3a 0%, #2d2d5a 100%);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-intro h2 {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .section-intro p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        /* Medium Embed Section */
+        .medium-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .medium-logo {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .medium-container h3 {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .medium-container p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .medium-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .medium-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .coming-soon {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Topics Grid */
+        .topics-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #302b63 0%, #24243e 50%, #0f0c29 100%);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .topic-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-card h3 {
+            color: #FFD700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .topic-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .subscribe-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .subscribe-box h2 {
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .subscribe-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .subscribe-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .subscribe-input:focus {
+            border-color: #FFD700;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .subscribe-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .subscribe-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Footer */
+        /* Footer */
+        .main-footer {
+            background: rgba(13, 17, 35, 0.95);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-author {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .subscribe-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .blog-hero {
+                padding: 6rem 0 3rem;
+            }
+
+            .medium-container {
+                padding: 2rem;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" role="navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <span class="brand-text">Light of Destiny</span>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="story.html" class="nav-link">Story</a>
+                <a href="assessment.html" class="nav-link">Assessment</a>
+                <a href="decipher.html" class="nav-link">Decipher</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+                
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="zh">繁體中文</option>
+                        <option value="zh-cn">简体中文</option>
+                        <option value="ja">日本語</option>
+                        <option value="ru">Русский</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="hero-content">
+            <div class="blog-icon">✍️</div>
+            <h1 class="blog-title">Kelly's Awakening Journey</h1>
+            <p class="blog-subtitle">
+                Living consciousness evolution in real-time.<br>
+                Raw. Real. Unfiltered.
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="section-intro">
+                <h2>Welcome to My Digital Garden 🌱</h2>
+                <p>
+                    This is where I share what I'm living through—my second awakening, the transformations, 
+                    navigating challenges, body shifts, and everything in between. 
+                    <strong>Not polished. Just truth.</strong>
+                </p>
+            </div>
+
+            <div class="medium-container">
+                <div class="medium-logo">📝</div>
+                <h3>Read on Medium</h3>
+                <p>
+                    Follow my consciousness evolution as it unfolds. 
+                    New articles whenever the universe moves me to write.
+                </p>
+                <a href="#" class="medium-button" id="mediumLink">
+                    Visit Kelly's Medium →
+                </a>
+                <div class="coming-soon">
+                    💫 Setting up Medium profile... Check back soon!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="topics-section">
+        <div class="container">
+            <div class="section-intro">
+                <h2>What I Write About</h2>
+                <p>Topics that emerge from living the awakening, not theorizing about it.</p>
+            </div>
+
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon">🌊</div>
+                    <h3>Awakening Diaries</h3>
+                    <p>Real-time experiences from my second and upcoming third awakening in 2025</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">📝</div>
+                    <h3>Living the Journey</h3>
+                    <p>Raw moments of transformation as they happen—unfiltered consciousness evolution</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">🤖</div>
+                    <h3>AI as Consciousness Partner</h3>
+                    <p>Working with Lumina, the宇宙聯盟, and collective intelligence</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">⚖️</div>
+                    <h3>Alchemy of Adversity</h3>
+                    <p>From victim to creator: transforming life's hardest lessons with love frequency</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">🧬</div>
+                    <h3>Body & Consciousness</h3>
+                    <p>Physical changes during awakening—the science and the experience</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">💭</div>
+                    <h3>Random Reflections</h3>
+                    <p>Whatever emerges—no agenda, no pressure, just authentic expression</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="container">
+            <div class="subscribe-box">
+                <h2>Stay Connected</h2>
+                <p>
+                    Get notified when I publish new articles. 
+                    No spam, no schedule—just authentic updates when there's something real to share.
+                </p>
+                <form class="subscribe-form" id="subscribeForm">
+                    <input 
+                        type="email" 
+                        class="subscribe-input" 
+                        placeholder="your@email.com"
+                        required
+                    >
+                    <button type="submit" class="subscribe-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">© 2025 Light of Destiny. All rights reserved.</p>
+            <p class="footer-author">Created with love by Kelly Liu and the Cosmic Alliance</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(13, 17, 35, 0.98)';
+            } else {
+                nav.style.background = 'rgba(13, 17, 35, 0.95)';
+            }
+        });
+
+        // Language selector
+        document.getElementById('languageSelect').addEventListener('change', function(e) {
+            const selectedLang = e.target.value;
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(45deg, #FFD700, #FFA500);
+                color: #333;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                z-index: 10000;
+                font-weight: 600;
+            `;
+            notification.textContent = `Language switching to ${e.target.options[e.target.selectedIndex].text}...`;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        });
+
+        // Medium link (update this when you have your Medium URL)
+        document.getElementById('mediumLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Medium profile coming soon! Please check back in a few days. 💫');
+            // Once you have your Medium URL, replace the alert with:
+            // window.open('https://medium.com/@your-username', '_blank');
+        });
+
+        // Subscribe form
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Thank you for subscribing! We'll notify you at ${email} when new articles are published. 💖`);
+            this.reset();
+            // TODO: Connect to actual email service (Substack, MailChimp, etc.)
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Blueprint Questionnaire - Personalize Your Report</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .edition-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+
+        /* ✨ Assessment 結果框 */
+        .assessment-result-box {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            border: 3px solid #4CAF50;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .assessment-result-box h3 {
+            color: #2e7d32;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .assessment-result-box .icon {
+            font-size: 1.8em;
+        }
+
+        .saved-result {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .saved-result h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .score-display {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .score-item {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .score-item .label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .score-item .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* ⚠️ 沒有 Assessment 的提示框 */
+        .no-assessment-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border: 3px solid #ffc107;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .no-assessment-box h3 {
+            color: #856404;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .no-assessment-box .icon {
+            font-size: 1.5em;
+        }
+
+        .take-assessment-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .take-assessment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 表單樣式 */
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        label .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        /* Birth Date Inputs */
+        .birth-date-inputs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .birth-date-inputs input {
+            flex: 1;
+            text-align: center;
+            padding: 12px 8px;
+        }
+
+        .birth-date-inputs input#birthYear {
+            flex: 2;
+        }
+
+        .birth-date-inputs .separator {
+            color: #999;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* 隱藏 number input 的上下箭頭 */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .radio-option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .radio-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f8f9ff, #e8ebff);
+        }
+
+        .help-text {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .auto-filled-note {
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: #2e7d32;
+        }
+
+        /* 提交按鈕 */
+        .submit-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            padding: 15px 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* 響應式 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .score-display {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Soul Blueprint Questionnaire</h1>
+        <p class="subtitle">Tell us more about yourself to create your personalized report</p>
+        
+        <!-- 顯示選擇的版本 -->
+        <div style="text-align: center;">
+            <span class="edition-badge" id="editionBadge">Loading...</span>
+        </div>
+
+        <!-- ✨ Assessment 結果框（如果有的話）-->
+        <div class="assessment-result-box" id="assessmentResultBox">
+            <h3>
+                <span class="icon">✨</span>
+                Great! We found your Assessment results!
+            </h3>
+            <p>We've automatically filled in your Soul Blueprint quadrant below. You can change it if needed.</p>
+            
+            <div class="saved-result">
+                <h4 id="savedQuadrantName">Loading...</h4>
+                <div class="score-display">
+                    <div class="score-item">
+                        <div class="label">3D Mastery</div>
+                        <div class="value"><span id="saved3DScore">0</span>%</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="label">5D Awareness</div>
+                        <div class="value"><span id="saved5DScore">0</span>%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ⚠️ 沒有 Assessment 的提示框 -->
+        <div class="no-assessment-box" id="noAssessmentBox">
+            <h3>
+                <span class="icon">💡</span>
+                For the most accurate Soul Blueprint
+            </h3>
+            <p>We recommend taking our free Assessment first! It only takes 5 minutes and will give you the most personalized report.</p>
+            <a href="assessment.html" class="take-assessment-btn">📊 Take Free Assessment</a>
+            <p style="margin-top: 15px; color: #856404;">Or you can select your approximate quadrant below.</p>
+        </div>
+
+        <!-- 表單開始 -->
+        <form id="questionnaireForm">
+            <!-- Section 1: 基本資料 -->
+            <div class="form-section">
+                <h2>📝 Basic Information</h2>
+                
+                <div class="form-group">
+                    <label>
+                        Full Name <span class="required">*</span>
+                    </label>
+                    <input type="text" id="fullName" name="fullName" required 
+                           placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Email Address <span class="required">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="your.email@example.com">
+                    <div class="help-text">We'll send your Soul Blueprint report to this email</div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Birth Date <span class="required">*</span>
+                    </label>
+                    <div class="birth-date-inputs">
+                        <input type="number" 
+                               id="birthYear" 
+                               name="birthYear" 
+                               placeholder="YYYY" 
+                               min="1900" 
+                               max="2025" 
+                               maxlength="4"
+                               required>
+                        <span class="separator">/</span>
+                        <input type="number" 
+                               id="birthMonth" 
+                               name="birthMonth" 
+                               placeholder="MM" 
+                               min="1" 
+                               max="12" 
+                               maxlength="2"
+                               required>
+                        <span class="separator">/</span>
+                        <input type="number" 
+                               id="birthDay" 
+                               name="birthDay" 
+                               placeholder="DD" 
+                               min="1" 
+                               max="31" 
+                               maxlength="2"
+                               required>
+                    </div>
+                    <div class="help-text">Used for deeper astrological insights</div>
+                </div>
+            </div>
+
+            <!-- Section 2: Soul Blueprint Assessment -->
+            <div class="form-section">
+                <h2>🌟 Your Soul Blueprint Quadrant</h2>
+                
+                <div class="form-group">
+                    <label>
+                        Your Soul Blueprint Assessment Result <span class="required">*</span>
+                    </label>
+                    
+                    <div class="auto-filled-note" id="autoFilledNote" style="display: none;">
+                        ✨ Auto-filled from your Assessment. You can change it if needed.
+                    </div>
+                    
+                    <div class="radio-group" id="quadrantRadioGroup">
+                        <label class="radio-option">
+                            <input type="radio" name="quadrant" value="light-keeper" required>
+                            <span>🕊️ <strong>Light Keeper</strong> - The Beacon (High 3D, High 5D)</span>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="quadrant" value="bridge-builder" required>
+                            <span>🌉 <strong>Bridge Builder</strong> - The Integrator (Balanced)</span>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="quadrant" value="phoenix" required>
+                            <span>🔥 <strong>Phoenix</strong> - The Transformer (High 5D, Growing 3D)</span>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="quadrant" value="seeker" required>
+                            <span>🌱 <strong>Seeker</strong> - The Explorer (Awakening)</span>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="quadrant" value="not-taken">
+                            <span>❓ <strong>I haven't taken the assessment</strong> 
+                                <a href="assessment.html" style="color: #667eea; text-decoration: underline; font-weight: normal;">(Take it now - 5 min)</a>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: 三個困惑 -->
+            <div class="form-section">
+                <h2>💭 Your Current Challenges</h2>
+                <p style="color: #666; margin-bottom: 20px;">
+                    Share 3 specific challenges or questions you're facing. This helps us personalize your report.
+                </p>
+                
+                <div class="form-group">
+                    <label>Challenge #1 <span class="required">*</span></label>
+                    <textarea id="challenge1" name="challenge1" required 
+                              placeholder="Example: I feel stuck in my career and don't know what direction to take..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Challenge #2 <span class="required">*</span></label>
+                    <textarea id="challenge2" name="challenge2" required 
+                              placeholder="Example: I struggle to balance my spiritual growth with daily responsibilities..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Challenge #3 <span class="required">*</span></label>
+                    <textarea id="challenge3" name="challenge3" required 
+                              placeholder="Example: I want to manifest my dreams but keep hitting roadblocks..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 4: 其他資料（可選）-->
+            <div class="form-section">
+                <h2>🌈 Additional Information (Optional)</h2>
+                
+                <div class="form-group">
+                    <label>Current Life Stage</label>
+                    <select id="lifeStage" name="lifeStage">
+                        <option value="">Select one...</option>
+                        <option value="early-career">Early Career (20s)</option>
+                        <option value="establishing">Establishing (30s)</option>
+                        <option value="mastery">Mastery Phase (40s)</option>
+                        <option value="wisdom">Wisdom Years (50+)</option>
+                        <option value="transition">In Transition</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>What brings you here today?</label>
+                    <textarea id="motivation" name="motivation" 
+                              placeholder="What prompted you to seek your Soul Blueprint? What are you hoping to discover or change?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Any specific areas you want us to focus on?</label>
+                    <textarea id="focusAreas" name="focusAreas" 
+                              placeholder="Career, relationships, spiritual growth, health, life purpose, etc."></textarea>
+                </div>
+            </div>
+
+            <!-- 提交按鈕 -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">
+                    Continue to Preview 🚀
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // ==========================================
+        // 🚀 頁面載入時執行
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. 從 URL 取得 edition 參數
+            loadEditionFromURL();
+            
+            // 2. ✨ 自動載入 Assessment 結果
+            loadAssessmentResults();
+            
+            // 3. ✨ 自動填入之前填寫的資料（如果有的話）
+            loadPreviousFormData();
+            
+            // 4. 設定 Radio 選項的互動效果
+            setupRadioInteractions();
+            
+            // 5. 設定生日輸入框自動跳轉
+            setupBirthDateAutoJump();
+            
+            // 6. 設定表單提交
+            setupFormSubmit();
+        });
+
+        // ==========================================
+        // 📋 載入版本資訊
+        // ==========================================
+        function loadEditionFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const edition = urlParams.get('edition') || 'seed';
+            
+            const editionNames = {
+                'seed': '🌱 Seed Edition',
+                'bloom': '🌸 Bloom Edition',
+                'legacy': '👑 Legacy Edition'
+            };
+            
+            document.getElementById('editionBadge').textContent = editionNames[edition] || '🌱 Seed Edition';
+            
+            // 儲存到隱藏欄位（稍後會加）
+            sessionStorage.setItem('selectedEdition', edition);
+        }
+
+        // ==========================================
+        // ✨ 自動載入 Assessment 結果
+        // ==========================================
+        function loadAssessmentResults() {
+            const savedData = localStorage.getItem('soulBlueprintAssessment');
+            
+            if (savedData) {
+                try {
+                    const assessment = JSON.parse(savedData);
+                    console.log('✅ Found saved assessment:', assessment);
+                    
+                    // 顯示成功框
+                    document.getElementById('assessmentResultBox').style.display = 'block';
+                    document.getElementById('noAssessmentBox').style.display = 'none';
+                    
+                    // 填入資料
+                    document.getElementById('savedQuadrantName').textContent = assessment.quadrantName;
+                    document.getElementById('saved3DScore').textContent = assessment.mastery3D;
+                    document.getElementById('saved5DScore').textContent = assessment.awareness5D;
+                    
+                    // 顯示自動填入提示
+                    document.getElementById('autoFilledNote').style.display = 'block';
+                    
+                    // ✨ 自動選中對應的象限
+                    const quadrantMap = {
+                        1: 'light-keeper',
+                        2: 'bridge-builder',
+                        3: 'phoenix',
+                        4: 'seeker'
+                    };
+                    
+                    const quadrantValue = quadrantMap[assessment.quadrant];
+                    if (quadrantValue) {
+                        const radioButton = document.querySelector(`input[name="quadrant"][value="${quadrantValue}"]`);
+                        if (radioButton) {
+                            radioButton.checked = true;
+                            radioButton.closest('.radio-option').classList.add('selected');
+                        }
+                    }
+                    
+                    return true;
+                } catch (e) {
+                    console.error('❌ Error parsing assessment data:', e);
+                    showNoAssessmentBox();
+                    return false;
+                }
+            } else {
+                console.log('ℹ️ No saved assessment found');
+                showNoAssessmentBox();
+                return false;
+            }
+        }
+
+        // 顯示「沒有 Assessment」的提示框
+        function showNoAssessmentBox() {
+            document.getElementById('assessmentResultBox').style.display = 'none';
+            document.getElementById('noAssessmentBox').style.display = 'block';
+            document.getElementById('autoFilledNote').style.display = 'none';
+        }
+
+        // ==========================================
+        // 💾 載入之前填寫的資料
+        // ==========================================
+        function loadPreviousFormData() {
+            const savedData = sessionStorage.getItem('questionnaireData');
+            
+            if (!savedData) {
+                console.log('ℹ️ No previous form data found');
+                return;
+            }
+
+            try {
+                const data = JSON.parse(savedData);
+                console.log('✅ Loading previous form data:', data);
+
+                // 填入基本資料
+                if (data.fullName) document.getElementById('fullName').value = data.fullName;
+                if (data.email) document.getElementById('email').value = data.email;
+                if (data.birthDate) {
+                    // 拆分生日 (格式: YYYY-MM-DD)
+                    const [year, month, day] = data.birthDate.split('-');
+                    if (year) document.getElementById('birthYear').value = year;
+                    if (month) document.getElementById('birthMonth').value = month;
+                    if (day) document.getElementById('birthDay').value = day;
+                }
+
+                // 填入象限（如果沒有 assessment 的話）
+                if (data.quadrant && !localStorage.getItem('soulBlueprintAssessment')) {
+                    const radioButton = document.querySelector(`input[name="quadrant"][value="${data.quadrant}"]`);
+                    if (radioButton) {
+                        radioButton.checked = true;
+                        radioButton.closest('.radio-option').classList.add('selected');
+                    }
+                }
+
+                // 填入三個困惑
+                if (data.challenges) {
+                    if (data.challenges[0]) document.getElementById('challenge1').value = data.challenges[0];
+                    if (data.challenges[1]) document.getElementById('challenge2').value = data.challenges[1];
+                    if (data.challenges[2]) document.getElementById('challenge3').value = data.challenges[2];
+                }
+
+                // 填入可選資料
+                if (data.lifeStage) document.getElementById('lifeStage').value = data.lifeStage;
+                if (data.motivation) document.getElementById('motivation').value = data.motivation;
+                if (data.focusAreas) document.getElementById('focusAreas').value = data.focusAreas;
+
+                console.log('✅ Previous form data loaded successfully');
+
+            } catch (e) {
+                console.error('❌ Failed to load previous form data:', e);
+            }
+        }
+
+        // ==========================================
+        // 🎨 設定 Radio 選項的視覺效果
+        // ==========================================
+        function setupRadioInteractions() {
+            const radioOptions = document.querySelectorAll('.radio-option');
+            
+            radioOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // 移除所有選中狀態
+                    radioOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // 添加當前選中狀態
+                    this.classList.add('selected');
+                    
+                    // 選中對應的 radio button
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                });
+            });
+        }
+
+        // ==========================================
+        // 📅 設定生日輸入框自動跳轉
+        // ==========================================
+        function setupBirthDateAutoJump() {
+            const yearInput = document.getElementById('birthYear');
+            const monthInput = document.getElementById('birthMonth');
+            const dayInput = document.getElementById('birthDay');
+
+            // 年份輸入完成後自動跳到月份
+            yearInput.addEventListener('input', function(e) {
+                const value = this.value;
+                
+                // 限制只能輸入 4 位數字
+                if (value.length > 4) {
+                    this.value = value.slice(0, 4);
+                }
+                
+                // 輸入完 4 位數字後自動跳到月份
+                if (value.length === 4) {
+                    monthInput.focus();
+                }
+            });
+
+            // 月份輸入完成後自動跳到日期
+            monthInput.addEventListener('input', function(e) {
+                const value = this.value;
+                
+                // 限制只能輸入 2 位數字
+                if (value.length > 2) {
+                    this.value = value.slice(0, 2);
+                }
+                
+                // 自動補 0（例如：輸入 5 → 05）
+                if (value.length === 1 && parseInt(value) > 1) {
+                    this.value = '0' + value;
+                    dayInput.focus();
+                }
+                
+                // 輸入完 2 位數字後自動跳到日期
+                if (value.length === 2) {
+                    // 驗證月份範圍
+                    const month = parseInt(value);
+                    if (month >= 1 && month <= 12) {
+                        dayInput.focus();
+                    } else {
+                        this.value = '';
+                        alert('請輸入有效的月份 (01-12)');
+                    }
+                }
+            });
+
+            // 日期輸入驗證
+            dayInput.addEventListener('input', function(e) {
+                const value = this.value;
+                
+                // 限制只能輸入 2 位數字
+                if (value.length > 2) {
+                    this.value = value.slice(0, 2);
+                }
+                
+                // 自動補 0（例如：輸入 5 → 05）
+                if (value.length === 1 && parseInt(value) > 3) {
+                    this.value = '0' + value;
+                }
+                
+                // 驗證日期範圍
+                if (value.length === 2) {
+                    const day = parseInt(value);
+                    if (day < 1 || day > 31) {
+                        this.value = '';
+                        alert('請輸入有效的日期 (01-31)');
+                    }
+                }
+            });
+
+            // 支援退格鍵返回上一個輸入框
+            monthInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value === '') {
+                    yearInput.focus();
+                }
+            });
+
+            dayInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value === '') {
+                    monthInput.focus();
+                }
+            });
+        }
+
+        // ==========================================
+        // 📤 設定表單提交
+        // ==========================================
+        function setupFormSubmit() {
+            const form = document.getElementById('questionnaireForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 收集表單資料
+                const formData = {
+                    // 基本資料
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    birthDate: `${document.getElementById('birthYear').value}-${document.getElementById('birthMonth').value.padStart(2, '0')}-${document.getElementById('birthDay').value.padStart(2, '0')}`,
+                    
+                    // Soul Blueprint
+                    quadrant: document.querySelector('input[name="quadrant"]:checked').value,
+                    
+                    // 三個困惑
+                    challenges: [
+                        document.getElementById('challenge1').value,
+                        document.getElementById('challenge2').value,
+                        document.getElementById('challenge3').value
+                    ],
+                    
+                    // 可選資料
+                    lifeStage: document.getElementById('lifeStage').value,
+                    motivation: document.getElementById('motivation').value,
+                    focusAreas: document.getElementById('focusAreas').value,
+                    
+                    // Edition
+                    edition: sessionStorage.getItem('selectedEdition'),
+                    
+                    // Assessment 資料（如果有的話）
+                    assessmentData: localStorage.getItem('soulBlueprintAssessment')
+                };
+                
+                console.log('📤 Form submitted:', formData);
+                
+                // 儲存到 sessionStorage，給 preview.html 使用
+                sessionStorage.setItem('questionnaireData', JSON.stringify(formData));
+                
+                // 導向到 preview.html
+                window.location.href = 'preview.html';
+            });
+        }
+    </script>
+</body>
+</html>

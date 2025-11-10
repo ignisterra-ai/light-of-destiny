@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Blueprint - Find Your Life Stage Edition | Light of Destiny</title>
+    <meta name="description" content="Discover your soul blueprint with our age-specific editions. Seed (18-35), Bloom (36-55), or Legacy (56+). Personalized consciousness analysis with 3D/5D integration.">
+    <style>
+        html {
+            overflow-y: scroll !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #2DD881 0%, #667eea 25%, #764ba2 50%, #8B5CF6 75%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+
+        .brand-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Hero Section - Fixed */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .main-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Version Selector */
+        .version-selector {
+            margin: 3rem 0;
+            padding: 2rem 0;
+        }
+
+        .selector-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .selector-tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .tab:hover::before {
+            opacity: 1;
+        }
+
+        .tab.active {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: #FFD700;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* Seed specific */
+        .tab[data-version="seed"].active {
+            border-color: #2DD881;
+            box-shadow: 0 15px 40px rgba(45, 216, 129, 0.4);
+        }
+
+        /* Bloom specific */
+        .tab[data-version="bloom"].active {
+            border-color: #FF69B4;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+        }
+
+        /* Legacy specific */
+        .tab[data-version="legacy"].active {
+            border-color: #8B5CF6;
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+
+        .tab-icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tab.active .tab-icon {
+            transform: scale(1.2);
+        }
+
+        .tab-name {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-age {
+            display: block;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .tab-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #FFD700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .tab[data-version="seed"] .tab-price {
+            color: #2DD881;
+            text-shadow: 0 0 15px rgba(45, 216, 129, 0.5);
+        }
+
+        .tab[data-version="bloom"] .tab-price {
+            color: #FF69B4;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        }
+
+        .tab[data-version="legacy"] .tab-price {
+            color: #E879F9;
+            text-shadow: 0 0 20px rgba(232, 121, 249, 0.8), 0 0 30px rgba(232, 121, 249, 0.4);
+        }
+
+        .tab-pages {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+        }
+
+        /* Content Container */
+        .content-container {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .version-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .version-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Seed specific sections */
+        .version-content[data-version="seed"] .section {
+            border-color: rgba(45, 216, 129, 0.3);
+        }
+
+        /* Bloom specific sections */
+        .version-content[data-version="bloom"] .section {
+            border-color: rgba(255, 105, 180, 0.3);
+        }
+
+        /* Legacy specific sections */
+        .version-content[data-version="legacy"] .section {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* Edition Badge */
+        .edition-badge {
+            display: inline-block;
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .version-content[data-version="seed"] .edition-badge {
+            background: linear-gradient(135deg, #2DD881, #27C073);
+        }
+
+        .version-content[data-version="bloom"] .edition-badge {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+        }
+
+        .version-content[data-version="legacy"] .edition-badge {
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+        }
+
+        /* Tagline */
+        .tagline {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        /* Price Section */
+        .price-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 0 0 20px currentColor;
+            margin-bottom: 0.5rem;
+        }
+
+        .version-content[data-version="seed"] .price {
+            color: #2DD881;
+        }
+
+        .version-content[data-version="bloom"] .price {
+            color: #FF69B4;
+        }
+
+        .version-content[data-version="legacy"] .price {
+            color: #E879F9;
+        }
+
+        .price-detail {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* CTA Button */
+        .cta-primary {
+            display: inline-block;
+            color: #000;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .version-content[data-version="seed"] .cta-primary {
+            background: linear-gradient(135deg, #2DD881, #FFD700);
+            box-shadow: 0 10px 30px rgba(45, 216, 129, 0.4);
+        }
+
+        .version-content[data-version="bloom"] .cta-primary {
+            background: linear-gradient(135deg, #FF69B4, #FFD700);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+        }
+
+        .version-content[data-version="legacy"] .cta-primary {
+            background: linear-gradient(135deg, #8B5CF6, #FFD700);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Checklist */
+        .checklist {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid;
+        }
+
+        .version-content[data-version="seed"] .checklist-item {
+            background: rgba(45, 216, 129, 0.1);
+            border-left-color: #2DD881;
+        }
+
+        .version-content[data-version="bloom"] .checklist-item {
+            background: rgba(255, 105, 180, 0.1);
+            border-left-color: #FF69B4;
+        }
+
+        .version-content[data-version="legacy"] .checklist-item {
+            background: rgba(139, 92, 246, 0.1);
+            border-left-color: #8B5CF6;
+        }
+
+        .checklist-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .checklist-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .version-content[data-version="seed"] .content-card {
+            border-color: rgba(45, 216, 129, 0.3);
+        }
+
+        .version-content[data-version="seed"] .content-card:hover {
+            background: rgba(45, 216, 129, 0.1);
+            box-shadow: 0 10px 30px rgba(45, 216, 129, 0.2);
+        }
+
+        .version-content[data-version="bloom"] .content-card {
+            border-color: rgba(255, 105, 180, 0.3);
+        }
+
+        .version-content[data-version="bloom"] .content-card:hover {
+            background: rgba(255, 105, 180, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+
+        .version-content[data-version="legacy"] .content-card {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .version-content[data-version="legacy"] .content-card:hover {
+            background: rgba(139, 92, 246, 0.1);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .content-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .version-content[data-version="seed"] .content-card-title {
+            color: #2DD881;
+        }
+
+        .version-content[data-version="bloom"] .content-card-title {
+            color: #FF69B4;
+        }
+
+        .version-content[data-version="legacy"] .content-card-title {
+            color: #8B5CF6;
+        }
+
+        .content-card-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Steps Section */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .version-content[data-version="seed"] .step-number {
+            background: linear-gradient(135deg, #2DD881, #27C073);
+            box-shadow: 0 5px 20px rgba(45, 216, 129, 0.4);
+        }
+
+        .version-content[data-version="bloom"] .step-number {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .version-content[data-version="legacy"] .step-number {
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-answer {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 15px;
+            }
+
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+
+            .selector-tabs {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tab {
+                padding: 1.5rem 1rem;
+            }
+
+            .tab-icon {
+                font-size: 3rem;
+            }
+
+            .tab-name {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .cta-primary {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Footer Styles */
+        .main-footer {
+            background: rgba(13, 17, 35, 0.95);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-author {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <div class="nav-bar">
+            <a href="assessment.html" class="back-btn">
+                ← Back to Assessment
+            </a>
+            <div class="brand-text">Light of Destiny</div>
+        </div>
+
+        <!-- Fixed Hero Section -->
+        <section class="hero">
+            <div class="product-icon">🌟</div>
+            <h1 class="main-title">Soul Blueprint</h1>
+            <p class="hero-tagline">Discover Your Consciousness Position & Life Purpose</p>
+            <p class="hero-description">
+                Personalized analysis based on your life stage, combining 3D and 5D wisdom 
+                to guide your unique journey toward awakening and fulfillment.
+            </p>
+        </section>
+
+        <!-- Version Selector -->
+        <section class="version-selector">
+            <h2 class="selector-title">Choose Your Life Stage Edition</h2>
+            <div class="selector-tabs">
+                <button class="tab active" data-version="seed">
+                    <span class="tab-icon">🌱</span>
+                    <span class="tab-name">Seed</span>
+                    <span class="tab-age">Ages 18-35</span>
+                    <span class="tab-price">SGD 69</span>
+                    <span class="tab-pages">20-30 pages</span>
+                </button>
+                
+                <button class="tab" data-version="bloom">
+                    <span class="tab-icon">🌸</span>
+                    <span class="tab-name">Bloom</span>
+                    <span class="tab-age">Ages 36-55</span>
+                    <span class="tab-price">SGD 99</span>
+                    <span class="tab-pages">30-40 pages</span>
+                </button>
+                
+                <button class="tab" data-version="legacy">
+                    <span class="tab-icon">🌳</span>
+                    <span class="tab-name">Legacy</span>
+                    <span class="tab-age">Ages 56+</span>
+                    <span class="tab-price">SGD 159</span>
+                    <span class="tab-pages">40-50 pages</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Dynamic Content Container -->
+        <div class="content-container">
+            
+            <!-- SEED VERSION CONTENT -->
+            <div class="version-content active" data-version="seed">
+                <div class="section" style="text-align: center;">
+                    <span class="edition-badge">🌱 Seed Edition (18-35)</span>
+                    <div class="tagline">"You're not immature. You're full of potential."</div>
+                    
+                    <div class="price-section">
+                        <div class="price">SGD 69</div>
+                        <div class="price-detail">One-time payment • Instant PDF delivery • 20-30 pages</div>
+                    </div>
+                    
+                    <a href="https://buy.stripe.com/dRm14o4Xt7jga2Y446eIw09" class="cta-primary" target="_blank">Get Your Soul Blueprint - Seed Edition</a>
+                </div>
+
+                <!-- This is for you if... -->
+                <div class="section">
+                    <h2 class="section-title">This is for you if...</h2>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌱</span>
+                            <p class="checklist-text">You feel like you "should" have it all figured out by now but honestly? You have no idea what you're doing.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🎯</span>
+                            <p class="checklist-text">Everyone expects you to pick a career, follow a plan, settle down—but something inside you whispers: "Is this really it?"</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">💫</span>
+                            <p class="checklist-text">You're tired of generic advice that worked for your parents but feels hollow for you.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🔮</span>
+                            <p class="checklist-text">You sense there's something deeper to discover about who you are—beyond job titles and Instagram personas.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌟</span>
+                            <p class="checklist-text">You want clarity on your gifts, direction, and purpose—without someone telling you to "just follow your passion."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What You'll Discover -->
+                <div class="section">
+                    <h2 class="section-title">What You'll Discover in Your Seed Blueprint</h2>
+                    <p class="section-subtitle">Personalized insights that meet you exactly where you are</p>
+                    
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="content-card-icon">🧬</div>
+                            <h3 class="content-card-title">Your Soul Seed Code</h3>
+                            <p class="content-card-text">Discover the unique consciousness pattern you were born with—your natural gifts waiting to sprout.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🎯</div>
+                            <h3 class="content-card-title">Direction Finder</h3>
+                            <p class="content-card-text">Clear guidance on which path aligns with your soul's intention, not society's expectations.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🔓</div>
+                            <h3 class="content-card-title">Unlocking Your Gifts</h3>
+                            <p class="content-card-text">Identify hidden talents you didn't know were valuable—and how to develop them.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🌊</div>
+                            <h3 class="content-card-title">Navigating Quarter-Life Chaos</h3>
+                            <p class="content-card-text">Why this confusion is actually awakening—and how to work with it, not against it.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">💰</div>
+                            <h3 class="content-card-title">3D Success Strategy</h3>
+                            <p class="content-card-text">Practical steps to build a life that sustains you materially while honoring your purpose.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">✨</div>
+                            <h3 class="content-card-title">5D Awakening Path</h3>
+                            <p class="content-card-text">Introduction to consciousness expansion—what it means and how to begin your journey.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why It Matters -->
+                <div class="section">
+                    <h2 class="section-title">Why This Matters Now</h2>
+                    <p class="section-subtitle">Your twenties and early thirties are not about "having it all figured out"—they're about discovering what matters to YOU.</p>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌱</span>
+                            <p class="checklist-text"><strong>Seeds need nurturing, not pressure:</strong> You're not behind. You're germinating.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🔑</span>
+                            <p class="checklist-text"><strong>Your confusion is your compass:</strong> That restlessness? It's your soul saying "there's more."</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">💎</span>
+                            <p class="checklist-text"><strong>This is your foundation phase:</strong> What you plant now determines what blooms later.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Insights -->
+                <div class="section">
+                    <h2 class="section-title">Sample Insights from Seed Edition</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">🌱 "Your soul chose this timeline for a reason"</div>
+                        <div class="faq-answer">You're part of a generation waking up to consciousness while the old system crumbles. This isn't easy—but it's powerful.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">🎯 "Your gifts aren't on LinkedIn"</div>
+                        <div class="faq-answer">Traditional careers may not resonate because your soul's work doesn't fit in a job description. We'll show you how to honor both.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">💫 "Experimentation is sacred work"</div>
+                        <div class="faq-answer">Trying different things isn't failing—it's how you discover what your soul came here to do.</div>
+                    </div>
+                </div>
+
+                <!-- CTA Bottom -->
+                <div class="section" style="text-align: center;">
+                    <h2 class="section-title">Ready to Plant Your Seeds?</h2>
+                    <p class="section-subtitle">Get your personalized Soul Blueprint and discover what you're really here for.</p>
+                    
+                    <div class="price-section">
+                        <div class="price">SGD 69</div>
+                        <div class="price-detail">Instant PDF delivery • 20-30 pages • Lifetime access</div>
+                    </div>
+                    
+                    <a href="https://buy.stripe.com/dRm14o4Xt7jga2Y446eIw09" class="cta-primary" target="_blank">Get Your Seed Blueprint Now</a>
+                </div>
+            </div>
+
+            <!-- BLOOM VERSION CONTENT -->
+            <div class="version-content" data-version="bloom">
+                <div class="section" style="text-align: center;">
+                    <span class="edition-badge">🌸 Bloom Edition (36-55)</span>
+                    <div class="tagline">"You're not having a crisis. You're blooming."</div>
+                    
+                    <div class="price-section">
+                        <div class="price">SGD 99</div>
+                        <div class="price-detail">One-time payment • Instant PDF delivery • 30-40 pages</div>
+                    </div>
+                    
+                    <a href="https://buy.stripe.com/6oU28sdtZdHEejegQSeIw0a" class="cta-primary" target="_blank">Get Your Soul Blueprint - Bloom Edition</a>
+                </div>
+
+                <!-- This is for you if... -->
+                <div class="section">
+                    <h2 class="section-title">This is for you if...</h2>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌸</span>
+                            <p class="checklist-text">You've "done everything right" but now you're wondering—is this really what I want?</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🔄</span>
+                            <p class="checklist-text">Something's shifting inside you—old goals don't excite you anymore, and you're craving meaning.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">💫</span>
+                            <p class="checklist-text">You feel like you're outgrowing the life you built—and you're ready to rewrite the next chapter.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🎯</span>
+                            <p class="checklist-text">You want to align your established skills with your soul's deeper purpose.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌟</span>
+                            <p class="checklist-text">You're ready to bloom—not start over, but transform what you've already built.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What You'll Discover -->
+                <div class="section">
+                    <h2 class="section-title">What You'll Discover in Your Bloom Blueprint</h2>
+                    <p class="section-subtitle">Transform your experience into wisdom and purpose</p>
+                    
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="content-card-icon">🌸</div>
+                            <h3 class="content-card-title">Your Soul Bloom Code</h3>
+                            <p class="content-card-text">Understanding your consciousness pattern and how it's evolved through your life experiences.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🔄</div>
+                            <h3 class="content-card-title">Navigating Transformation</h3>
+                            <p class="content-card-text">Why this isn't a mid-life crisis—it's your soul's invitation to bloom into who you really are.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">💎</div>
+                            <h3 class="content-card-title">Integrating Experience</h3>
+                            <p class="content-card-text">How to honor everything you've built while evolving toward deeper meaning.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🎯</div>
+                            <h3 class="content-card-title">Purpose Realignment</h3>
+                            <p class="content-card-text">Practical guidance for pivoting your career, relationships, or lifestyle toward soul alignment.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🌟</div>
+                            <h3 class="content-card-title">3D Mastery ↔ 5D Awakening</h3>
+                            <p class="content-card-text">Balancing material success with spiritual depth—you can have both.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🦋</div>
+                            <h3 class="content-card-title">Leadership Emergence</h3>
+                            <p class="content-card-text">How to step into your role as a guide, mentor, or catalyst for others.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why It Matters -->
+                <div class="section">
+                    <h2 class="section-title">Why This Matters Now</h2>
+                    <p class="section-subtitle">Your bloom phase is when experience meets purpose. This is your power decade.</p>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌸</span>
+                            <p class="checklist-text"><strong>You have the roots, now bloom:</strong> Your foundation is strong. It's time to let your true gifts flower.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">💫</span>
+                            <p class="checklist-text"><strong>This restlessness is sacred:</strong> It's your soul reminding you there's more to life than what you've achieved.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🔑</span>
+                            <p class="checklist-text"><strong>Transform, don't abandon:</strong> You don't need to blow up your life—you need to realign it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Insights -->
+                <div class="section">
+                    <h2 class="section-title">Sample Insights from Bloom Edition</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">🌸 "Your 'crisis' is actually awakening"</div>
+                        <div class="faq-answer">That discomfort with the status quo? It's not failure—it's your consciousness expanding.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">💎 "Your experience is your superpower"</div>
+                        <div class="faq-answer">Everything you've learned can now be channeled into your soul's true work.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">🦋 "This is your leadership decade"</div>
+                        <div class="faq-answer">You're meant to guide others. Your bloom inspires blooming in others.</div>
+                    </div>
+                </div>
+
+                <!-- CTA Bottom -->
+                <div class="section" style="text-align: center;">
+                    <h2 class="section-title">Ready to Bloom?</h2>
+                    <p class="section-subtitle">Get your personalized Soul Blueprint and discover how to transform your experience into purpose.</p>
+                    
+                    <div class="price-section">
+                        <div class="price">SGD 99</div>
+                        <div class="price-detail">Instant PDF delivery • 30-40 pages • Lifetime access</div>
+                    </div>
+                    
+                    <a href="https://buy.stripe.com/6oU28sdtZdHEejegQSeIw0a" class="cta-primary" target="_blank">Get Your Bloom Blueprint Now</a>
+                </div>
+            </div>
+
+            <!-- LEGACY VERSION CONTENT -->
+            <div class="version-content" data-version="legacy">
+                <div class="section" style="text-align: center;">
+                    <span class="edition-badge">🌳 Legacy Edition (56+)</span>
+                    <div class="tagline">"You're not aging. You're ascending."</div>
+                    
+                    <div class="price-section">
+                        <div class="price">SGD 159</div>
+                        <div class="price-detail">One-time payment • Instant PDF delivery • 40-50 pages</div>
+                    </div>
+                    
+                    <a href="https://buy.stripe.com/14A7sM61x0US1wscACeIw0b" class="cta-primary" target="_blank">Get Your Soul Blueprint - Legacy Edition</a>
+                </div>
+
+                <!-- This is for you if... -->
+                <div class="section">
+                    <h2 class="section-title">This is for you if...</h2>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌳</span>
+                            <p class="checklist-text">You've lived a full life but feel like your most important work is still ahead.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">👴</span>
+                            <p class="checklist-text">Society says you're "aging," but you feel like you're just beginning to understand what matters.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">💫</span>
+                            <p class="checklist-text">You want to leave something meaningful—not just for family, but for the world.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🔮</span>
+                            <p class="checklist-text">You're experiencing deeper spiritual insights and want to integrate them into your legacy.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌟</span>
+                            <p class="checklist-text">You're ready to step into your role as an elder, guide, and wisdom keeper.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What You'll Discover -->
+                <div class="section">
+                    <h2 class="section-title">What You'll Discover in Your Legacy Blueprint</h2>
+                    <p class="section-subtitle">Transform your wisdom into lasting impact</p>
+                    
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="content-card-icon">🌳</div>
+                            <h3 class="content-card-title">Your Soul Legacy Code</h3>
+                            <p class="content-card-text">Understanding your consciousness pattern and the wisdom you've accumulated across decades.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">📜</div>
+                            <h3 class="content-card-title">Wisdom Integration</h3>
+                            <p class="content-card-text">How to distill your life experiences into teachings that serve others.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🎯</div>
+                            <h3 class="content-card-title">Legacy Crafting</h3>
+                            <p class="content-card-text">Practical guidance for creating impact—whether through mentorship, creative work, or contribution.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🔮</div>
+                            <h3 class="content-card-title">Spiritual Deepening</h3>
+                            <p class="content-card-text">How to use this stage of life for consciousness expansion and soul preparation.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">👴</div>
+                            <h3 class="content-card-title">Elder Wisdom Activation</h3>
+                            <p class="content-card-text">Stepping into your role as guide, teacher, and bridge between generations.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="content-card-icon">🌟</div>
+                            <h3 class="content-card-title">5D Consciousness Mastery</h3>
+                            <p class="content-card-text">Advanced integration of 3D accomplishments with 5D awareness and soul evolution.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why It Matters -->
+                <div class="section">
+                    <h2 class="section-title">Why This Matters Now</h2>
+                    <p class="section-subtitle">Your legacy phase is where wisdom becomes gift. This is your contribution era.</p>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🌳</span>
+                            <p class="checklist-text"><strong>Your roots run deep:</strong> Everything you've learned can now nourish others.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">💎</span>
+                            <p class="checklist-text"><strong>Age is consciousness evolution:</strong> You're not declining—you're ascending to your highest form.</p>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="checklist-icon">🔑</span>
+                            <p class="checklist-text"><strong>The world needs your wisdom:</strong> In a confused era, elders are the compass.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Insights -->
+                <div class="section">
+                    <h2 class="section-title">Sample Insights from Legacy Edition</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">🌳 "You're not retiring from purpose"</div>
+                        <div class="faq-answer">This is the beginning of your most meaningful work—sharing what you've learned.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">💫 "Your life story is medicine"</div>
+                        <div class="faq-answer">Every challenge you've overcome contains wisdom someone else desperately needs.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">🔮 "This is your ascension decade"</div>
+                        <div class="faq-answer">Spiritually, this stage offers the deepest insights. Your consciousness is ripening.</div>
+                    </div>
+                </div>
+
+                <!-- CTA Bottom -->
+                <div class="section" style="text-align: center;">
+                    <h2 class="section-title">Ready to Create Your Legacy?</h2>
+                    <p class="section-subtitle">Get your personalized Soul Blueprint and discover how to turn your wisdom into lasting impact.</p>
+                    
+                    <div class="price-section">
+                        <div class="price">SGD 159</div>
+                        <div class="price-detail">Instant PDF delivery • 40-50 pages • Lifetime access</div>
+                    </div>
+                    
+                    <a href="https://buy.stripe.com/14A7sM61x0US1wscACeIw0b" class="cta-primary" target="_blank">Get Your Legacy Blueprint Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHARED SECTIONS - Always visible -->
+        
+        <!-- How It Works -->
+        <div class="section">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Getting your Soul Blueprint is simple</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Complete Your Assessment</h3>
+                        <p class="step-text">Take our consciousness assessment (10-15 minutes) to share your experiences, challenges, and aspirations.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Choose Your Edition</h3>
+                        <p class="step-text">Select the life-stage edition that resonates with where you are now: Seed, Bloom, or Legacy.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Receive Your Blueprint</h3>
+                        <p class="step-text">Get your personalized Soul Blueprint PDF delivered instantly to your email—beautifully designed and ready to guide you.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Begin Your Journey</h3>
+                        <p class="step-text">Read, reflect, and implement. Your blueprint is your roadmap—revisit it as you evolve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why This Works -->
+        <div class="section">
+            <h2 class="section-title">Why This Works</h2>
+            <p class="section-subtitle">Your Soul Blueprint is built on proven frameworks</p>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-card-icon">🔬</div>
+                    <h3 class="content-card-title">Science-Backed</h3>
+                    <p class="content-card-text">Combines developmental psychology, consciousness research, and life stage theory.</p>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-icon">🌟</div>
+                    <h3 class="content-card-title">Spiritually Grounded</h3>
+                    <p class="content-card-text">Integrates ancient wisdom traditions with modern consciousness understanding.</p>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-icon">🎯</div>
+                    <h3 class="content-card-title">Personally Tailored</h3>
+                    <p class="content-card-text">Not generic astrology or personality tests—this is about YOUR unique soul pattern.</p>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-icon">💼</div>
+                    <h3 class="content-card-title">Practically Actionable</h3>
+                    <p class="content-card-text">Every insight comes with concrete steps you can implement immediately.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Coming Soon -->
+        <div class="section" style="text-align: center; background: rgba(255, 215, 0, 0.1); border-color: rgba(255, 215, 0, 0.3);">
+            <h2 class="section-title">🎓 Full Course Coming Soon</h2>
+            <p class="section-subtitle" style="max-width: 800px;">
+                Your Soul Blueprint is just the beginning. We're developing a comprehensive course that will guide you through implementing your blueprint, 
+                connecting with others on the same journey, and deepening your consciousness evolution.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem;">
+                Blueprint holders get early access + special pricing. 💫
+            </p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How is this different from astrology or personality tests?</div>
+                <div class="faq-answer">While we respect those tools, your Soul Blueprint is personalized to YOUR specific life experiences, challenges, and consciousness patterns—not just your birth date or test answers. It combines developmental psychology, spiritual wisdom, and your unique journey.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if I'm between life stages?</div>
+                <div class="faq-answer">Choose the edition that resonates with your current energy and challenges. If you're 35, you might be transitioning from Seed to Bloom—trust your intuition. Some people bloom early; others are eternal seeds. You know where you are.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is this religious or tied to a specific belief system?</div>
+                <div class="faq-answer">No. Your Soul Blueprint honors all spiritual paths (or none). We use universal consciousness principles that work regardless of your religious background—or lack thereof.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How long until I receive my blueprint?</div>
+                <div class="faq-answer">Instant delivery! After purchase, you'll receive your personalized PDF via email within minutes. Save it, print it, revisit it anytime.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I buy multiple editions?</div>
+                <div class="faq-answer">Absolutely! Some people want to understand different life stages, gift them to family, or track their own evolution. Bundle pricing available at checkout.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if I don't resonate with my blueprint?</div>
+                <div class="faq-answer">We offer a 30-day satisfaction guarantee. If your Soul Blueprint doesn't feel aligned, email us and we'll refund you—no questions asked.</div>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="section" style="text-align: center; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(139, 92, 246, 0.1)); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <h2 class="section-title">Your Soul Has Been Waiting For This</h2>
+            <p class="section-subtitle" style="max-width: 700px; font-size: 1.3rem;">
+                You didn't land on this page by accident. Your consciousness guided you here. 
+                The question isn't whether you need this—it's whether you're ready.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.8); margin: 1.5rem 0; font-size: 1.1rem;">
+                ↑ Scroll up to choose your edition ↑
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-copyright">
+            © 2025 Light of Destiny. All rights reserved.
+        </div>
+        <div class="footer-author">
+            Created with 💜 by the Cosmic Alliance
+        </div>
+    </footer>
+
+    <!-- JavaScript for Version Switching -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.version-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const version = this.dataset.version;
+                    
+                    // Remove all active states
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active to selected
+                    this.classList.add('active');
+                    const selectedContent = document.querySelector(`.version-content[data-version="${version}"]`);
+                    selectedContent.classList.add('active');
+                    
+                    // Smooth scroll to content
+                    setTimeout(() => {
+                        document.querySelector('.content-container').scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }, 100);
+                    
+                    // Update URL without reload (optional - for sharing specific versions)
+                    if (history.pushState) {
+                        const newUrl = window.location.pathname + '?version=' + version;
+                        history.pushState({path: newUrl}, '', newUrl);
+                    }
+                });
+            });
+            
+            // Check URL parameter on load
+            const urlParams = new URLSearchParams(window.location.search);
+            const versionParam = urlParams.get('version');
+            if (versionParam) {
+                const tab = document.querySelector(`.tab[data-version="${versionParam}"]`);
+                if (tab) {
+                    tab.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
