@@ -54,7 +54,7 @@ class I18n {
                                 this.loadedPages.add('common');
                             }
                             resolve();
-                        }, 10);
+                        }, 100);
                     };
                     commonScript.onerror = reject;
                     document.head.appendChild(commonScript);
@@ -75,7 +75,7 @@ class I18n {
                                 this.loadedPages.add(page);
                             }
                             resolve();
-                        }, 10);
+                        }, 100);
                     };
                     pageScript.onerror = () => {
                         console.warn(`Page translations for ${page} not found, using common only`);
