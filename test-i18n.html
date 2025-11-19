@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i18n System Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0d1123;
+            color: #fff;
+        }
+        .test-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .status.pass { background: #4ade80; color: #000; }
+        .status.fail { background: #f87171; color: #000; }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        h2 { color: #FFD700; }
+        .translated {
+            background: rgba(255,215,0,0.1);
+            padding: 10px;
+            border-left: 3px solid #FFD700;
+            margin: 10px 0;
+        }
+        code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 i18n System Diagnostic Tool</h1>
+
+    <div class="test-card">
+        <h2>Language Selector</h2>
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="zh">繁體中文</option>
+            <option value="zh-cn">简体中文</option>
+            <option value="ja">日本語</option>
+            <option value="ru">Русский</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+    <div class="test-card">
+        <h2>Test Elements</h2>
+        <div class="translated">
+            <p><strong>Navigation Test:</strong> <span data-i18n="nav_home">Home</span></p>
+            <p><strong>Common Test:</strong> <span data-i18n="btn_get_started">Get Started</span></p>
+            <p><strong>Index Test:</strong> <span data-i18n="hero_title">Light of Destiny</span></p>
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2>System Status</h2>
+        <div id="status">
+            <p>⏳ Initializing...</p>
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2>Translation Data</h2>
+        <div id="data">
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2>Console Log</h2>
+        <div id="console" style="font-family: monospace; font-size: 12px; max-height: 300px; overflow-y: auto;">
+        </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script>
+        // Intercept console.log
+        const consoleDiv = document.getElementById('console');
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const line = document.createElement('div');
+            line.textContent = args.join(' ');
+            line.style.padding = '2px 0';
+            line.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+            consoleDiv.appendChild(line);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        };
+
+        // Run diagnostics after i18n loads
+        setTimeout(() => {
+            const statusDiv = document.getElementById('status');
+            const dataDiv = document.getElementById('data');
+
+            // Check if i18n exists
+            if (typeof window.i18n === 'undefined') {
+                statusDiv.innerHTML = '<span class="status fail">FAIL</span> window.i18n is not defined';
+                return;
+            }
+
+            // Check translations loaded
+            const langs = Object.keys(window.i18n.translations);
+            const currentLang = window.i18n.currentLang;
+            const keyCount = Object.keys(window.i18n.translations[currentLang] || {}).length;
+
+            statusDiv.innerHTML = `
+                <p><span class="status pass">PASS</span> i18n system loaded</p>
+                <p><span class="status pass">PASS</span> Current language: <code>${currentLang}</code></p>
+                <p><span class="status ${keyCount > 0 ? 'pass' : 'fail'}">${keyCount > 0 ? 'PASS' : 'FAIL'}</span> Translation keys: <code>${keyCount}</code></p>
+                <p><span class="status ${langs.length > 0 ? 'pass' : 'fail'}">${langs.length > 0 ? 'PASS' : 'FAIL'}</span> Languages: <code>${langs.join(', ')}</code></p>
+            `;
+
+            // Show sample translations
+            const samples = ['nav_home', 'btn_get_started', 'hero_title'];
+            let dataHtml = '<h3>Sample Translations:</h3>';
+
+            langs.forEach(lang => {
+                dataHtml += `<h4>${lang}:</h4><ul>`;
+                samples.forEach(key => {
+                    const value = window.i18n.translations[lang]?.[key] || '❌ Missing';
+                    dataHtml += `<li><code>${key}</code>: ${value}</li>`;
+                });
+                dataHtml += '</ul>';
+            });
+
+            dataDiv.innerHTML = dataHtml;
+
+        }, 2000);
+    </script>
+</body>
+</html>
