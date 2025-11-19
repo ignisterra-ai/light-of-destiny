@@ -105,12 +105,49 @@ class I18n {
     }
 
     // 更新頁面上所有的翻譯文字
-    updatePageContent() {
+    updatePageContent(withAnimation = false) {
+        const elements = document.querySelectorAll('[data-i18n], [data-i18n-html]');
+
+        if (withAnimation && elements.length > 0) {
+            // 添加淡出效果
+            elements.forEach(el => {
+                el.style.transition = 'opacity 0.2s ease-out';
+                el.style.opacity = '0';
+            });
+
+            // 等待淡出完成後更新內容
+            setTimeout(() => {
+                this.updateTranslations();
+
+                // 淡入效果
+                setTimeout(() => {
+                    elements.forEach(el => {
+                        el.style.opacity = '1';
+                    });
+
+                    // 清除 transition 避免影響其他動畫
+                    setTimeout(() => {
+                        elements.forEach(el => {
+                            el.style.transition = '';
+                        });
+                    }, 200);
+                }, 50);
+            }, 200);
+        } else {
+            this.updateTranslations();
+        }
+
+        // 更新 HTML lang 屬性
+        document.documentElement.lang = this.currentLang;
+    }
+
+    // 實際更新翻譯的內部方法
+    updateTranslations() {
         // 更新所有有 data-i18n 屬性的元素
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = this.t(key);
-            
+
             // 檢查是否有特殊屬性需要翻譯
             const attr = element.getAttribute('data-i18n-attr');
             if (attr) {
@@ -125,17 +162,14 @@ class I18n {
             const key = element.getAttribute('data-i18n-html');
             element.innerHTML = this.t(key);
         });
-
-        // 更新 HTML lang 屬性
-        document.documentElement.lang = this.currentLang;
     }
 
     // 切換語言
     async changeLanguage(lang) {
         this.currentLang = lang;
         this.setStoredLanguage(lang);
-        this.updatePageContent();
-        
+        this.updatePageContent(true); // 啟用動畫效果
+
         // 更新語言選擇器的值
         const selector = document.getElementById('languageSelect');
         if (selector) {
@@ -143,8 +177,8 @@ class I18n {
         }
 
         // 觸發自定義事件
-        window.dispatchEvent(new CustomEvent('languageChanged', { 
-            detail: { language: lang } 
+        window.dispatchEvent(new CustomEvent('languageChanged', {
+            detail: { language: lang }
         }));
     }
 

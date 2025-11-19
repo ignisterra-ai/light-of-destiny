@@ -11,7 +11,16 @@
     <meta property="og:image" content="https://www.lightofdestiny.love/assets/images/book-cover.jpg">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    
+
+    <!-- Multilingual SEO -->
+    <link rel="alternate" hreflang="en" href="https://www.lightofdestiny.love/index.html" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://www.lightofdestiny.love/index.html" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.lightofdestiny.love/index.html" />
+    <link rel="alternate" hreflang="ja" href="https://www.lightofdestiny.love/index.html" />
+    <link rel="alternate" hreflang="ru" href="https://www.lightofdestiny.love/index.html" />
+    <link rel="alternate" hreflang="es" href="https://www.lightofdestiny.love/index.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.lightofdestiny.love/index.html" />
+
     <style>
         html {
             overflow-y: scroll !important;
@@ -1746,11 +1755,11 @@
             </div>
             
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="story.html" class="nav-link">Story</a>
-                <a href="assessment.html" class="nav-link">Assessment</a>
-                <a href="decipher.html" class="nav-link">Decipher</a>
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="index.html" class="nav-link active" data-i18n="nav_home">Home</a>
+                <a href="story.html" class="nav-link" data-i18n="nav_story">Story</a>
+                <a href="assessment.html" class="nav-link" data-i18n="nav_assessment">Assessment</a>
+                <a href="decipher.html" class="nav-link" data-i18n="nav_decipher">Decipher</a>
+                <a href="blog.html" class="nav-link" data-i18n="nav_blog">Blog</a>
                 
                 <!-- Language Selector -->
                 <div class="language-selector">
@@ -2233,5 +2242,6 @@
         </div>
     </section>
 
+    <script src="i18n.js"></script>
     </body>
 </html>
