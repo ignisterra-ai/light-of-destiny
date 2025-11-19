@@ -46,16 +46,19 @@ class I18n {
                 const commonScript = document.createElement('script');
                 commonScript.src = 'i18n/common.js';
                 await new Promise((resolve, reject) => {
-                    commonScript.onload = resolve;
+                    commonScript.onload = () => {
+                        // 等待瀏覽器註冊全局變量
+                        setTimeout(() => {
+                            if (window.commonTranslations) {
+                                this.mergeTranslations(window.commonTranslations);
+                                this.loadedPages.add('common');
+                            }
+                            resolve();
+                        }, 10);
+                    };
                     commonScript.onerror = reject;
                     document.head.appendChild(commonScript);
                 });
-                
-                // 合併 common 翻譯
-                if (window.commonTranslations) {
-                    this.mergeTranslations(window.commonTranslations);
-                    this.loadedPages.add('common');
-                }
             }
 
             // 2. 載入頁面專用翻譯(如果還沒載入)
@@ -63,20 +66,23 @@ class I18n {
                 const pageScript = document.createElement('script');
                 pageScript.src = `i18n/${page}.js`;
                 await new Promise((resolve, reject) => {
-                    pageScript.onload = resolve;
+                    pageScript.onload = () => {
+                        // 等待瀏覽器註冊全局變量
+                        setTimeout(() => {
+                            const pageTranslationsVar = `${page}Translations`;
+                            if (window[pageTranslationsVar]) {
+                                this.mergeTranslations(window[pageTranslationsVar]);
+                                this.loadedPages.add(page);
+                            }
+                            resolve();
+                        }, 10);
+                    };
                     pageScript.onerror = () => {
                         console.warn(`Page translations for ${page} not found, using common only`);
                         resolve();
                     };
                     document.head.appendChild(pageScript);
                 });
-                
-                // 合併頁面翻譯
-                const pageTranslationsVar = `${page}Translations`;
-                if (window[pageTranslationsVar]) {
-                    this.mergeTranslations(window[pageTranslationsVar]);
-                    this.loadedPages.add(page);
-                }
             }
 
             return true;
@@ -94,6 +100,9 @@ class I18n {
             }
             Object.assign(this.translations[lang], newTranslations[lang]);
         }
+        console.log('✅ Translations merged. Available languages:', Object.keys(this.translations));
+        console.log('📝 Current language:', this.currentLang);
+        console.log('🔑 Translation keys loaded:', Object.keys(this.translations[this.currentLang] || {}).length);
     }
 
     // 取得翻譯文字
@@ -144,7 +153,10 @@ class I18n {
     // 實際更新翻譯的內部方法
     updateTranslations() {
         // 更新所有有 data-i18n 屬性的元素
-        document.querySelectorAll('[data-i18n]').forEach(element => {
+        const i18nElements = document.querySelectorAll('[data-i18n]');
+        console.log(`🔄 Updating ${i18nElements.length} elements with data-i18n`);
+
+        i18nElements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = this.t(key);
 
@@ -158,7 +170,10 @@ class I18n {
         });
 
         // 更新所有有 data-i18n-html 屬性的元素(支援 HTML 內容)
-        document.querySelectorAll('[data-i18n-html]').forEach(element => {
+        const htmlElements = document.querySelectorAll('[data-i18n-html]');
+        console.log(`🔄 Updating ${htmlElements.length} elements with data-i18n-html`);
+
+        htmlElements.forEach(element => {
             const key = element.getAttribute('data-i18n-html');
             element.innerHTML = this.t(key);
         });
@@ -184,17 +199,23 @@ class I18n {
 
     // 初始化
     async init(page = 'index') {
+        console.log('🚀 i18n initializing for page:', page);
+        console.log('🌍 Detected/stored language:', this.currentLang);
+
         // 載入翻譯檔案
         await this.loadTranslations(page);
-        
+
         // 更新頁面內容
         this.updatePageContent();
-        
+
+        console.log('✅ i18n initialized successfully');
+
         // 設置語言選擇器
         const selector = document.getElementById('languageSelect');
         if (selector) {
             selector.value = this.currentLang;
             selector.addEventListener('change', (e) => {
+                console.log('🔄 Language changed to:', e.target.value);
                 this.changeLanguage(e.target.value);
             });
         }
