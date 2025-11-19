@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>i18n Debug Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #0d1123;
+            color: #fff;
+        }
+        .success { color: #4ade80; }
+        .error { color: #f87171; }
+        .info { color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <h1>🔍 i18n Loading Debug</h1>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = type;
+            div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            output.appendChild(div);
+        }
+
+        log('🚀 Debug script started', 'info');
+
+        // Test 1: Check if i18n.js loads
+        log('📥 Loading i18n.js...', 'info');
+
+        const script = document.createElement('script');
+        script.src = 'i18n.js';
+        script.onload = () => {
+            log('✅ i18n.js loaded successfully', 'success');
+
+            // Test 2: Check if window.i18n exists
+            setTimeout(() => {
+                if (typeof window.i18n !== 'undefined') {
+                    log('✅ window.i18n exists', 'success');
+                    log(`📊 Current language: ${window.i18n.currentLang}`, 'info');
+                    log(`📚 Translations: ${JSON.stringify(Object.keys(window.i18n.translations))}`, 'info');
+                } else {
+                    log('❌ window.i18n is undefined!', 'error');
+                }
+            }, 100);
+        };
+
+        script.onerror = (e) => {
+            log('❌ Failed to load i18n.js!', 'error');
+            log(`Error: ${e}`, 'error');
+        };
+
+        document.head.appendChild(script);
+
+        // Test 3: Try to load common.js directly
+        setTimeout(() => {
+            log('📥 Testing direct load of i18n/common.js...', 'info');
+            const commonScript = document.createElement('script');
+            commonScript.src = 'i18n/common.js';
+            commonScript.onload = () => {
+                log('✅ i18n/common.js loaded', 'success');
+                if (typeof window.commonTranslations !== 'undefined') {
+                    log('✅ window.commonTranslations exists', 'success');
+                    const langs = Object.keys(window.commonTranslations);
+                    log(`📚 Available languages in common: ${langs.join(', ')}`, 'info');
+                } else {
+                    log('❌ window.commonTranslations is undefined!', 'error');
+                }
+            };
+            commonScript.onerror = () => {
+                log('❌ Failed to load i18n/common.js!', 'error');
+            };
+            document.head.appendChild(commonScript);
+        }, 500);
+    </script>
+</body>
+</html>

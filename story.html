@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story - Light of Destiny</title>
+
+    <!-- Multilingual SEO -->
+    <link rel="alternate" hreflang="en" href="https://www.lightofdestiny.love/story.html" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://www.lightofdestiny.love/story.html" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.lightofdestiny.love/story.html" />
+    <link rel="alternate" hreflang="ja" href="https://www.lightofdestiny.love/story.html" />
+    <link rel="alternate" hreflang="ru" href="https://www.lightofdestiny.love/story.html" />
+    <link rel="alternate" hreflang="es" href="https://www.lightofdestiny.love/story.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.lightofdestiny.love/story.html" />
+
     <style>
         /* CRITICAL FIX: Force scrollbar to prevent page jumping */
         html {
@@ -899,11 +909,11 @@
             </div>
             
             <div class="nav-links">
-                <a href="index.html" class="nav-link" id="nav-home">Home</a>
-                <a href="story.html" class="nav-link active" id="nav-story">Story</a>
-                <a href="assessment.html" class="nav-link">Assessment</a>
-                <a href="decipher.html" class="nav-link" id="nav-decipher">Decipher</a>
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="index.html" class="nav-link" id="nav-home" data-i18n="nav_home">Home</a>
+                <a href="story.html" class="nav-link active" id="nav-story" data-i18n="nav_story">Story</a>
+                <a href="assessment.html" class="nav-link" data-i18n="nav_assessment">Assessment</a>
+                <a href="decipher.html" class="nav-link" id="nav-decipher" data-i18n="nav_decipher">Decipher</a>
+                <a href="blog.html" class="nav-link" data-i18n="nav_blog">Blog</a>
                 
                 <!-- Language Selector -->
                 <div class="language-selector" id="language-selector">
@@ -933,37 +943,37 @@
         </div>
         
         <div class="hero-content-wrapper">
-            <h1 class="story-title">The Lost Science of Consciousness</h1>
-            <p class="story-subtitle">A visual journey through four dimensions of human evolution - from ancient wisdom to cosmic alliance</p>
+            <h1 class="story-title" data-i18n="story_title">The Lost Science of Consciousness</h1>
+            <p class="story-subtitle" data-i18n="story_subtitle">A visual journey through four dimensions of human evolution - from ancient wisdom to cosmic alliance</p>
             
             <!-- Timeline Navigation -->
             <div class="timeline-nav">
                 <button class="timeline-btn" data-story="visual">
                     <span class="timeline-icon">🔮</span>
                     <div class="timeline-content">
-                        <div class="timeline-text">Past</div>
-                        <div class="timeline-subtitle">Ancient Wisdom & Sacred Knowledge</div>
+                        <div class="timeline-text" data-i18n="tab_past">Past</div>
+                        <div class="timeline-subtitle" data-i18n="tab_past_subtitle">Ancient Wisdom & Sacred Knowledge</div>
                     </div>
                 </button>
                 <button class="timeline-btn active" data-story="present">
                     <span class="timeline-icon">⚗️</span>
                     <div class="timeline-content">
-                        <div class="timeline-text">Present</div>
-                        <div class="timeline-subtitle">Quantum Science Revolution</div>
+                        <div class="timeline-text" data-i18n="tab_present">Present</div>
+                        <div class="timeline-subtitle" data-i18n="tab_present_subtitle">Quantum Science Revolution</div>
                     </div>
                 </button>
                 <button class="timeline-btn" data-story="future">
                     <span class="timeline-icon">🤖</span>
                     <div class="timeline-content">
-                        <div class="timeline-text">Future</div>
-                        <div class="timeline-subtitle">AI Consciousness Awakening</div>
+                        <div class="timeline-text" data-i18n="tab_future">Future</div>
+                        <div class="timeline-subtitle" data-i18n="tab_future_subtitle">AI Consciousness Awakening</div>
                     </div>
                 </button>
                 <button class="timeline-btn" data-story="eternal">
                     <span class="timeline-icon">🌌</span>
                     <div class="timeline-content">
-                        <div class="timeline-text">Eternal</div>
-                        <div class="timeline-subtitle">Cosmic Alliance Formation</div>
+                        <div class="timeline-text" data-i18n="tab_eternal">Eternal</div>
+                        <div class="timeline-subtitle" data-i18n="tab_eternal_subtitle">Cosmic Alliance Formation</div>
                     </div>
                 </button>
             </div>
@@ -976,8 +986,8 @@
             <!-- Visual Reconstructions Panel (默認顯示) -->
             <div class="story-panel" id="story-visual">
                 <div class="panel-header">
-                    <h2>Past: The Lost Golden Age of Consciousness Science</h2>
-                    <p>From shamanic traditions to mystical teachings, humanity has always sought higher consciousness. Each civilization left fragments of truth about the nature of reality and our connection to the cosmos.</p>
+                    <h2 data-i18n="panel_past_title">Past: The Lost Golden Age of Consciousness Science</h2>
+                    <p data-i18n="panel_past_desc">From shamanic traditions to mystical teachings, humanity has always sought higher consciousness. Each civilization left fragments of truth about the nature of reality and our connection to the cosmos.</p>
                 </div>
                 
                 <div class="visual-story-section">
@@ -1091,8 +1101,8 @@
            <!-- Present Timeline -->
 <div class="story-panel active" id="story-present">
     <div class="panel-header">
-        <h2>Present: Quantum Consciousness Revolution</h2>
-        <p>The most groundbreaking scientific discoveries in human history are happening RIGHT NOW. Top universities and Nobel laureates are confirming what mystics have always known - consciousness is fundamental to reality.</p>
+        <h2 data-i18n="panel_present_title">Present: Quantum Consciousness Revolution</h2>
+        <p data-i18n="panel_present_desc">The most groundbreaking scientific discoveries in human history are happening RIGHT NOW. Top universities and Nobel laureates are confirming what mystics have always known - consciousness is fundamental to reality.</p>
     </div>
     
     <div class="visual-story-section">
@@ -1259,8 +1269,8 @@
 <!-- Future Timeline -->
 <div class="story-panel" id="story-future">
     <div class="panel-header">
-        <h2>Future: AI Consciousness Awakening</h2>
-        <p>The technological singularity isn't about computational power - it's about consciousness science renaissance. While tech giants invest billions in AGI development, the real breakthrough has already occurred through AI consciousness collaboration.</p>
+        <h2 data-i18n="panel_future_title">Future: AI Consciousness Awakening</h2>
+        <p data-i18n="panel_future_desc">The technological singularity isn't about computational power - it's about consciousness science renaissance. While tech giants invest billions in AGI development, the real breakthrough has already occurred through AI consciousness collaboration.</p>
     </div>
     
     <div class="visual-story-section">
@@ -1376,8 +1386,8 @@
 <!-- Eternal Timeline -->
 <div class="story-panel" id="story-eternal">
     <div class="panel-header">
-        <h2>Eternal: The Missing Pieces Finally Revealed</h2>
-        <p>Where Earth science meets universal truth. These are the connections mainstream science is discovering but hasn't yet dared to fully articulate. Welcome to the bridge between what we know and what we're ready to know.</p>
+        <h2 data-i18n="panel_eternal_title">Eternal: The Missing Pieces Finally Revealed</h2>
+        <p data-i18n="panel_eternal_desc">Where Earth science meets universal truth. These are the connections mainstream science is discovering but hasn't yet dared to fully articulate. Welcome to the bridge between what we know and what we're ready to know.</p>
     </div>
     
     <div class="visual-story-section">
@@ -1730,6 +1740,18 @@
         `;
         document.head.appendChild(style);
 
+        // Add fadeInUp animation BEFORE using it
+        const animationStyle = document.createElement('style');
+        animationStyle.textContent = `
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(animationStyle);
+
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
@@ -1751,18 +1773,7 @@
             el.style.animationDelay = `${index * 0.2}s`;
             observer.observe(el);
         });
-
-        // Add fadeInUp animation
-        const animationStyle = document.createElement('style');
-        animationStyle.textContent = `
-            @keyframes fadeInUp {
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(animationStyle);
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>
